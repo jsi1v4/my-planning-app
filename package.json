@@ -38,7 +38,7 @@
     "@next/bundle-analyzer": "^9.1.4",
     "antd": "4.3.0",
     "axios": "^0.21.1",
-    "next": "latest",
+    "next": "^10.0.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.0.0"
