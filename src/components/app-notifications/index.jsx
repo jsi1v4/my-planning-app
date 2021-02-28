@@ -16,7 +16,9 @@ function Content({ data }) {
   return (
     <div data-testid="content">
       {data.map((n) => (
-        <p data-testid="content-item">{n}</p>
+        <p key={n} data-testid="content-item">
+          {n}
+        </p>
       ))}
     </div>
   );
