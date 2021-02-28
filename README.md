@@ -7,6 +7,7 @@ My finances management app, built with nextjs and ant design.
 - NextJS: Static pages
 - Styled components: Create styles
 - AntD: Icons and components
+- FormatJs: Support ptBR and enUS langs
 - Axios: Http request
 - Jest and Testing-Library: Unit tests
 - ESlint and lint-staged: Airbnb config
