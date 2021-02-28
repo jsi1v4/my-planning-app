@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppMenu component matches snapshot 1`] = `
+<DocumentFragment>
+  <ul
+    class="ant-menu ant-menu-dark ant-menu-root ant-menu-inline"
+    data-testid="menu"
+    role="menu"
+  >
+    <li
+      class="ant-menu-item ant-menu-item-only-child ant-menu-item-selected"
+      role="menuitem"
+      style="padding-left: 24px;"
+    >
+      Home
+    </li>
+  </ul>
+</DocumentFragment>
+`;

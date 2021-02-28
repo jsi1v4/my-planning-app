@@ -4,33 +4,45 @@ import { BellOutlined } from '@ant-design/icons';
 
 import { useI18n } from '../../i18n';
 
-export function Notifications({ data }) {
-  const t = useI18n();
+function Icon({ count }) {
+  return (
+    <Badge count={count}>
+      <BellOutlined data-testid="icon" />
+    </Badge>
+  );
+}
 
-  const Content = (
-    <div>
+function Content({ data }) {
+  return (
+    <div data-testid="content">
       {data.map((n) => (
-        <p>{n}</p>
+        <p data-testid="content-item">{n}</p>
       ))}
     </div>
   );
+}
 
-  const Icon = (
-    <Badge count={data.length}>
-      <BellOutlined />
-    </Badge>
-  );
+export function Notifications({ data }) {
+  const t = useI18n();
 
   return (
     <Popover
-      content={Content}
+      content={<Content data={data} />}
       title={t('app_notification')}
       trigger="click"
       placement="leftBottom"
     >
-      <Button type="text" shape="circle" icon={Icon} />
+      <Button
+        type="text"
+        shape="circle"
+        icon={<Icon count={data.length} />}
+        data-testid="notes"
+      />
     </Popover>
   );
 }
+
+Notifications.Icon = Icon;
+Notifications.Content = Content;
 
 export default Notifications;

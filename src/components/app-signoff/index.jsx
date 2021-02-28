@@ -8,6 +8,7 @@ export function Signoff({ userName, signOut }) {
       <Button
         type="text"
         shape="circle"
+        data-testid="sign-out"
         icon={<LogoutOutlined />}
         onClick={signOut}
       />

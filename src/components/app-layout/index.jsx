@@ -9,20 +9,18 @@ export function AppLayout({ menu, extra, children }) {
   const t = useI18n();
 
   return (
-    <>
-      <Layout>
-        <Layout.Sider>
-          <Centered>
-            <Logo src={LOGO} />
-          </Centered>
-          {menu}
-        </Layout.Sider>
-        <FullPage>
-          <Header title={t('app_title')} extra={extra} />
-          <Content>{children}</Content>
-        </FullPage>
-      </Layout>
-    </>
+    <Layout data-testid="app-layout">
+      <Layout.Sider>
+        <Centered>
+          <Logo src={LOGO} />
+        </Centered>
+        {menu}
+      </Layout.Sider>
+      <FullPage>
+        <Header title={t('app_title')} extra={extra} />
+        <Content>{children}</Content>
+      </FullPage>
+    </Layout>
   );
 }
 
