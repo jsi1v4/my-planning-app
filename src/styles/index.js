@@ -32,6 +32,11 @@ export const GlobalStyles = createGlobalStyle`
     --height-lg: 40px;
     --height-sm: 24px;
   }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--font-size-base);
+  }
 `;
 
 export default GlobalStyles;
