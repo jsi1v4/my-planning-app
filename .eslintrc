@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "airbnb/hooks"],
+  "extends": ["airbnb", "airbnb/hooks", "plugin:prettier/recommended"],
   "rules": {
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
@@ -7,9 +7,15 @@
     "operator-linebreak": "off",
     "comma-dangle": "off"
   },
+  "plugins": ["react", "prettier"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
