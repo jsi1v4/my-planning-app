@@ -10,4 +10,6 @@ export default {
   INIT_LOCALE,
   EN_US,
   PT_BR,
+  ICON,
+  LOGO,
 };
