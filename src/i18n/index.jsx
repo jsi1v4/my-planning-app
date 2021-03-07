@@ -1,14 +1,7 @@
-import React, { useMemo } from 'react';
-import { ConfigProvider } from 'antd';
-import { IntlProvider, useIntl } from 'react-intl';
+import React, { createContext, useState } from 'react';
+import { useIntl } from 'react-intl';
 
-import enUS from 'antd/lib/locale/en_US';
-import ptBR from 'antd/lib/locale/pt_BR';
-
-import enUSe from './lang/en_US.json';
-import ptBRe from './lang/pt_BR.json';
-
-import { PT_BR } from '../config';
+import { INIT_LOCALE } from '../config';
 
 export function useI18n() {
   const intl = useIntl();
@@ -18,29 +11,24 @@ export function useI18n() {
   };
 }
 
-export function LocaleConfig({ lang, children }) {
-  const locale = useMemo(() => {
-    switch (lang) {
-      case PT_BR:
-        return {
-          antd: ptBR,
-          extend: ptBRe,
-        };
-      default:
-        return {
-          antd: enUS,
-          extend: enUSe,
-        };
-    }
-  }, [lang]);
+export const I18nContext = createContext(null);
+
+export function I18nProvider({ children }) {
+  const [lang, setLanguage] = useState(INIT_LOCALE);
+  const changeLang = (value) => {
+    setLanguage(value);
+  };
 
   return (
-    <ConfigProvider locale={locale.antd}>
-      <IntlProvider locale={lang} messages={locale.extend}>
-        {children}
-      </IntlProvider>
-    </ConfigProvider>
+    <I18nContext.Provider
+      value={{
+        lang,
+        changeLang,
+      }}
+    >
+      {children}
+    </I18nContext.Provider>
   );
 }
 
-export default LocaleConfig;
+export default I18nProvider;
