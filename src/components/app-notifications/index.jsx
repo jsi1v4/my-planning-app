@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Popover, Badge } from 'antd';
 import { BellOutlined } from '@ant-design/icons';
 
 import { useI18n } from '../../i18n';
+import { NotificationsContext } from '../../providers/notifications';
 
 function Icon({ count }) {
   return (
@@ -24,7 +25,8 @@ function Content({ data }) {
   );
 }
 
-export function Notifications({ data }) {
+export function Notifications() {
+  const { data } = useContext(NotificationsContext);
   const t = useI18n();
 
   return (

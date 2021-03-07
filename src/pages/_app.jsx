@@ -1,37 +1,39 @@
 import React from 'react';
 import 'antd/dist/antd.dark.css';
 
-import { LocaleConfig } from '../i18n';
+import { I18nProvider } from '../i18n';
+import { I18nMessagesProvider } from '../i18n/messages';
 import { GlobalStyles } from '../styles';
+import { NotificationsProvider } from '../providers/notifications';
+import { AuthenticationProvider } from '../providers/authentication';
 import { AppLayout } from '../components/app-layout';
 import { AppMenu } from '../components/app-menu';
 import { Notifications } from '../components/app-notifications';
 import { Signoff } from '../components/app-signoff';
 import { I18nSwitch } from '../components/app-i18n-switch';
-import { useAppController } from '../hooks/app-controller';
 
-export default function MyApp({ Component, pageProps }) {
-  const {
-    locale,
-    handleLocale,
-    userName,
-    signOut,
-    notesData,
-  } = useAppController();
-
+export function App({ Component, pageProps }) {
   return (
-    <LocaleConfig lang={locale}>
-      <GlobalStyles />
-      <AppLayout
-        menu={<AppMenu />}
-        extra={[
-          <I18nSwitch key={0} value={locale} onChange={handleLocale} />,
-          <Notifications key={1} data={notesData} />,
-          <Signoff key={2} userName={userName} signOut={signOut} />,
-        ]}
-      >
-        <Component {...pageProps} />
-      </AppLayout>
-    </LocaleConfig>
+    <I18nProvider>
+      <I18nMessagesProvider>
+        <GlobalStyles />
+        <AuthenticationProvider>
+          <NotificationsProvider>
+            <AppLayout
+              menu={<AppMenu />}
+              extra={[
+                <I18nSwitch key={0} />,
+                <Notifications key={1} />,
+                <Signoff key={2} />,
+              ]}
+            >
+              <Component {...pageProps} />
+            </AppLayout>
+          </NotificationsProvider>
+        </AuthenticationProvider>
+      </I18nMessagesProvider>
+    </I18nProvider>
   );
 }
+
+export default App;
