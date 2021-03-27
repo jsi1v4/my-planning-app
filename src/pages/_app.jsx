@@ -4,8 +4,8 @@ import 'antd/dist/antd.dark.css';
 import { I18nProvider } from '../i18n';
 import { I18nMessagesProvider } from '../i18n/messages';
 import { GlobalStyles } from '../styles';
+import { AuthenticationProvider } from '../authentication';
 import { NotificationsProvider } from '../providers/notifications';
-import { AuthenticationProvider } from '../providers/authentication';
 import { AppLayout } from '../components/app-layout';
 import { AppMenu } from '../components/app-menu';
 import { Notifications } from '../components/app-notifications';
@@ -24,7 +24,7 @@ export function App({ Component, pageProps }) {
               extra={[
                 <I18nSwitch key={0} />,
                 <Notifications key={1} />,
-                <Signoff key={2} />,
+                <Signoff key={2} />
               ]}
             >
               <Component {...pageProps} />

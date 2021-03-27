@@ -6,8 +6,10 @@ export function AuthenticationMock({ children }) {
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuth: true,
         userName: 'John Doe',
-        signOut: jest.fn(),
+        authOn: jest.fn(),
+        authOff: jest.fn()
       }}
     >
       {children}
