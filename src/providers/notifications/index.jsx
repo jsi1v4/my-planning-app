@@ -8,7 +8,7 @@ export function NotificationsProvider({ children }) {
   return (
     <NotificationsContext.Provider
       value={{
-        data,
+        data
       }}
     >
       {children}

@@ -19,12 +19,12 @@ export function I18nMessagesProvider({ children }) {
       case PT_BR:
         return {
           antd: ptBR,
-          extend: ptBRe,
+          extend: ptBRe
         };
       default:
         return {
           antd: enUS,
-          extend: enUSe,
+          extend: enUSe
         };
     }
   }, [lang]);

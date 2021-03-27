@@ -6,7 +6,7 @@ export function NotificationsMock({ children }) {
   return (
     <NotificationsContext.Provider
       value={{
-        data: [],
+        data: []
       }}
     >
       {children}

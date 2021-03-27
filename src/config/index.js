@@ -11,5 +11,5 @@ export default {
   EN_US,
   PT_BR,
   ICON,
-  LOGO,
+  LOGO
 };
