@@ -1,4 +1,5 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 export const AuthenticationContext = createContext(null);
 
@@ -11,7 +12,7 @@ export function AuthenticationProvider({ children }) {
   };
 
   const authOff = () => {
-    setIsAuth(true);
+    setIsAuth(false);
   };
 
   return (
@@ -28,17 +29,26 @@ export function AuthenticationProvider({ children }) {
   );
 }
 
-export function withAuth() {
-  return ({ children }) => {
-    const { isAuth } = useContext(AuthenticationContext);
-    if (isAuth) {
-      return <>{children}</>;
-    }
-    return null;
-  };
+export function useLoginAction() {
+  const router = useRouter();
+  return () => router.push('/login');
 }
 
-export default {
-  AuthenticationProvider,
-  withAuth
-};
+export function withAuth() {
+  return (Component) =>
+    React.memo(function AuthWrappedComponent(props) {
+      const { isAuth } = useContext(AuthenticationContext);
+      const loginAction = useLoginAction();
+
+      useEffect(() => {
+        if (!isAuth) {
+          loginAction();
+        }
+      }, [isAuth, loginAction]);
+
+      if (isAuth) {
+        return <Component {...props} />;
+      }
+      return null;
+    });
+}

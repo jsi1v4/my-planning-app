@@ -1,5 +1,8 @@
 import React from 'react';
+import { compose } from 'ramda';
 import { Card } from 'antd';
+
+import { withAuth } from '../authentication';
 
 function Home() {
   return (
@@ -9,4 +12,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default compose(withAuth())(Home);

@@ -21,11 +21,8 @@ export function App({ Component, pageProps }) {
           <NotificationsProvider>
             <AppLayout
               menu={<AppMenu />}
-              extra={[
-                <I18nSwitch key={0} />,
-                <Notifications key={1} />,
-                <Signoff key={2} />
-              ]}
+              extra={[<I18nSwitch key={0} />]}
+              extraWhenAuth={[<Notifications key={1} />, <Signoff key={2} />]}
             >
               <Component {...pageProps} />
             </AppLayout>
