@@ -3,14 +3,6 @@ import { useIntl } from 'react-intl';
 
 import { INIT_LOCALE } from '../config';
 
-export function useI18n() {
-  const intl = useIntl();
-  return (id, values) => {
-    const message = intl.formatMessage({ id }, values);
-    return <>{message}</>;
-  };
-}
-
 export const I18nContext = createContext(null);
 
 export function I18nProvider({ children }) {
@@ -31,4 +23,10 @@ export function I18nProvider({ children }) {
   );
 }
 
-export default I18nProvider;
+export function useI18n() {
+  const intl = useIntl();
+  return (id, values) => {
+    const message = intl.formatMessage({ id }, values);
+    return message;
+  };
+}
