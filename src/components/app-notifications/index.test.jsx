@@ -1,20 +1,22 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { LocaleTesting } from '../../utils/testing';
+import { wrapse } from '../../utils';
+import { I18nMock } from '../../i18n/mock';
+import { NotificationsMock } from '../../providers/notifications/mock';
 import { Notifications } from './index';
 
 describe('Notifications component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<Notifications data={[]} />, {
-      wrapper: LocaleTesting,
+    const { asFragment } = render(<Notifications />, {
+      wrapper: wrapse(I18nMock, NotificationsMock)
     });
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render component', async () => {
-    const { getByTestId } = render(<Notifications data={[]} />, {
-      wrapper: LocaleTesting,
+    const { getByTestId } = render(<Notifications />, {
+      wrapper: wrapse(I18nMock, NotificationsMock)
     });
     expect(getByTestId('notes').innerHTML).toBeDefined();
   });
