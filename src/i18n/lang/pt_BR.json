@@ -4,5 +4,11 @@
   "app_signoff-confirm": "Tem certeza de que deseja sair?",
   "app_signoff-ok": "Sim",
   "app_signoff-cancel": "Não",
-  "app_menu-home": "Inicio"
+  "app_menu-home": "Inicio",
+  "app_login_label-username": "Usuario",
+  "app_login_label-password": "Senha",
+  "app_login_message-username": "Por favor, insira seu usuario!",
+  "app_login_message-password": "Por favor, insira sua senha!",
+  "app_login_label-rememberme": "Lembre de mim",
+  "app_login_btn-login": "Logar"
 }
