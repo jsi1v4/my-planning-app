@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { wrapse } from '../../utils';
-import { I18nMock } from '../../i18n/mock';
-import { NotificationsMock } from '../../providers/notifications/mock';
+import { wrapse } from 'src/utils';
+import { I18nMock } from 'src/i18n/mock';
+import { NotificationsMock } from 'src/providers/notifications/mock';
 import { Notifications } from './index';
 
 describe('Notifications component', () => {
@@ -24,7 +24,7 @@ describe('Notifications component', () => {
   it('should render children components', async () => {
     const { getByTestId } = render(
       <>
-        <Notifications.Icon />
+        <Notifications.Icon count={0} />
         <Notifications.Content data={['']} />
       </>
     );

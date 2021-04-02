@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { I18nMock } from '../../i18n/mock';
+import { I18nMock } from 'src/i18n/mock';
 import { I18nSwitch } from './index';
 
 describe('I18nSwitch component', () => {

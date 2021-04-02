@@ -1,12 +1,24 @@
 import React, { useContext } from 'react';
 import { Layout } from 'antd';
 
-import { LOGO } from '../../config';
-import { useI18n } from '../../i18n';
-import { AuthenticationContext } from '../../authentication';
+import { LOGO } from 'src/config';
+import { useI18n } from 'src/i18n';
+import { AuthenticationContext } from 'src/authentication';
 import { Logo, FullPage, Header, Content, Centered } from './styles';
 
-export function AppLayout({ menu, extra, extraWhenAuth, children }) {
+export interface AppLayoutProps {
+  menu?: JSX.Element;
+  extra?: JSX.Element[];
+  extraWhenAuth?: JSX.Element[];
+  children?: JSX.Element;
+}
+
+export function AppLayout({
+  menu,
+  extra,
+  extraWhenAuth,
+  children
+}: AppLayoutProps) {
   const t = useI18n();
   const { isAuth } = useContext(AuthenticationContext);
 

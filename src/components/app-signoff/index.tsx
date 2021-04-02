@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { Button, Tooltip, Popconfirm } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 
-import { useI18n } from '../../i18n';
-import { AuthenticationContext } from '../../authentication';
+import { useI18n } from 'src/i18n';
+import { AuthenticationContext } from 'src/authentication';
 
 export function Signoff() {
   const { userName, authOff } = useContext(AuthenticationContext);

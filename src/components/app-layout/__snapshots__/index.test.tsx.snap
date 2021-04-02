@@ -14,20 +14,20 @@ exports[`AppLayout component matches snapshot 1`] = `
         class="ant-layout-sider-children"
       >
         <div
-          class="ant-row styles__Centered-t9ggvx-4 iLwpPw"
+          class="ant-row styles__Centered-o445a3-4 fvKljT"
         >
           <img
-            class="styles__Logo-t9ggvx-0 fiTTSr"
+            class="styles__Logo-o445a3-0 cvlvKA"
             src="https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/logo192.png"
           />
         </div>
       </div>
     </aside>
     <section
-      class="ant-layout styles__FullPage-t9ggvx-1 gLlzLV"
+      class="ant-layout styles__FullPage-o445a3-1 fLkxHe"
     >
       <div
-        class="ant-page-header styles__Header-t9ggvx-2 cCuuAs ant-page-header-ghost"
+        class="ant-page-header styles__Header-o445a3-2 evxaAj ant-page-header-ghost"
       >
         <div
           class="ant-page-header-heading"
@@ -48,7 +48,7 @@ exports[`AppLayout component matches snapshot 1`] = `
         </div>
       </div>
       <section
-        class="ant-layout styles__Content-t9ggvx-3 jkkToD"
+        class="ant-layout styles__Content-o445a3-3 bOModY"
       />
     </section>
   </section>

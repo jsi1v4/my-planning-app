@@ -1,9 +1,13 @@
 import React, { createContext, useState } from 'react';
 
-export const NotificationsContext = createContext(null);
+import { INotificationsContext } from './types';
+
+export const NotificationsContext = createContext<INotificationsContext>(
+  null as never
+);
 
 export function NotificationsProvider({ children }) {
-  const [data] = useState([]);
+  const [data] = useState<string[]>([]);
 
   return (
     <NotificationsContext.Provider

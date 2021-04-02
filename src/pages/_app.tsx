@@ -1,16 +1,16 @@
 import React from 'react';
 import 'antd/dist/antd.dark.css';
 
-import { I18nProvider } from '../i18n';
-import { I18nMessagesProvider } from '../i18n/messages';
-import { GlobalStyles } from '../styles';
-import { AuthenticationProvider } from '../authentication';
-import { NotificationsProvider } from '../providers/notifications';
-import { AppLayout } from '../components/app-layout';
-import { AppMenu } from '../components/app-menu';
-import { Notifications } from '../components/app-notifications';
-import { Signoff } from '../components/app-signoff';
-import { I18nSwitch } from '../components/app-i18n-switch';
+import { I18nProvider } from 'src/i18n';
+import { I18nMessagesProvider } from 'src/i18n/messages';
+import { GlobalStyles } from 'src/styles';
+import { AuthenticationProvider } from 'src/authentication';
+import { NotificationsProvider } from 'src/providers/notifications';
+import { AppLayout } from 'src/components/app-layout';
+import { AppMenu } from 'src/components/app-menu';
+import { Notifications } from 'src/components/app-notifications';
+import { Signoff } from 'src/components/app-signoff';
+import { I18nSwitch } from 'src/components/app-i18n-switch';
 
 export function App({ Component, pageProps }) {
   return (

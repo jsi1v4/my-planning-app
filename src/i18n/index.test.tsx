@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { render } from '@testing-library/react';
 
-import { PT_BR } from '../config';
-import { I18nContext, useI18n } from './index';
+import { Locale } from './types';
 import { I18nMock } from './mock';
+import { I18nContext, useI18n } from './index';
 
 describe('LocaleProvider provider', () => {
   const ComponentEnUS = () => {
@@ -16,7 +16,7 @@ describe('LocaleProvider provider', () => {
     const t = useI18n();
 
     useEffect(() => {
-      changeLang(PT_BR);
+      changeLang(Locale.PT_BR);
     }, [changeLang]);
 
     return <>{t('app_title')}</>;

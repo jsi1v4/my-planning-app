@@ -7,6 +7,4 @@ export const FillLayout = styled.div`
   flex: 0.85;
 `;
 
-export default {
-  FillLayout
-};
+export default FillLayout;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'ramda';
 
-import { withAuth } from '../../authentication';
+import { withAuth } from 'src/authentication';
 
 function Sheet() {
   return <></>;

@@ -2,10 +2,14 @@ import React, { useContext } from 'react';
 import { Button, Popover, Badge } from 'antd';
 import { BellOutlined } from '@ant-design/icons';
 
-import { useI18n } from '../../i18n';
-import { NotificationsContext } from '../../providers/notifications';
+import { useI18n } from 'src/i18n';
+import { NotificationsContext } from 'src/providers/notifications';
 
-function Icon({ count }) {
+interface IconProps {
+  count: number;
+}
+
+function Icon({ count }: IconProps) {
   return (
     <Badge count={count}>
       <BellOutlined data-testid="icon" />
@@ -13,7 +17,11 @@ function Icon({ count }) {
   );
 }
 
-function Content({ data }) {
+interface ContentProps {
+  data: string[];
+}
+
+function Content({ data }: ContentProps) {
   return (
     <div data-testid="content">
       {data.map((n) => (

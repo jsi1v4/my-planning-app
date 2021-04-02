@@ -8,7 +8,7 @@ import ptBR from 'antd/lib/locale/pt_BR';
 import enUSe from './lang/en_US.json';
 import ptBRe from './lang/pt_BR.json';
 
-import { PT_BR } from '../config';
+import { Locale } from './types';
 import { I18nContext } from './index';
 
 export function I18nMessagesProvider({ children }) {
@@ -16,7 +16,7 @@ export function I18nMessagesProvider({ children }) {
 
   const msgs = useMemo(() => {
     switch (lang) {
-      case PT_BR:
+      case Locale.PT_BR:
         return {
           antd: ptBR,
           extend: ptBRe

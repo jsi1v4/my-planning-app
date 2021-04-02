@@ -2,9 +2,19 @@ import React from 'react';
 import { Card, Form, Input, Checkbox, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-import { useI18n } from '../../i18n';
+import { useI18n } from 'src/i18n';
 
-export function LoginFormCard({ initialValues, handleLogin }) {
+export interface LoginFormCardProps {
+  initialValues?: {
+    remember: boolean;
+  };
+  handleLogin?: () => void;
+}
+
+export function LoginFormCard({
+  initialValues,
+  handleLogin
+}: LoginFormCardProps) {
   const t = useI18n();
 
   return (

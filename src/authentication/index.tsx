@@ -1,11 +1,15 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export const AuthenticationContext = createContext(null);
+import { IAuthenticationContext } from './types';
+
+export const AuthenticationContext = createContext<IAuthenticationContext>(
+  null as never
+);
 
 export function AuthenticationProvider({ children }) {
-  const [userName] = useState('John Doe');
-  const [isAuth, setIsAuth] = useState(false);
+  const [userName] = useState<string>('John Doe');
+  const [isAuth, setIsAuth] = useState<boolean>(false);
 
   const authOn = () => {
     setIsAuth(true);

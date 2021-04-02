@@ -1,8 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
+import { NextRouter } from 'next/router';
 
-import { AuthenticationContext } from '../../authentication';
+import { AuthenticationContext } from 'src/authentication';
 
-export function useLoginPageController(router) {
+export function useLoginPageController(router: NextRouter) {
   const { authOn } = useContext(AuthenticationContext);
 
   const initialValues = { remember: true };
@@ -11,10 +12,6 @@ export function useLoginPageController(router) {
     authOn();
     router.push('/');
   };
-
-  useEffect(() => {
-    console.log('### TEST');
-  }, []);
 
   return {
     initialValues,

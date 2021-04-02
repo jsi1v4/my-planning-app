@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from 'antd';
 
-import { useI18n } from '../../i18n';
+import { useI18n } from 'src/i18n';
 
 export function AppMenu() {
   const t = useI18n();

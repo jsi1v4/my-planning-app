@@ -2,7 +2,7 @@ import React from 'react';
 import { compose } from 'ramda';
 import { Card } from 'antd';
 
-import { withAuth } from '../authentication';
+import { withAuth } from 'src/authentication';
 
 function Home() {
   return (

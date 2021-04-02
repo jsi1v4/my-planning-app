@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { wrapse } from '../../utils';
-import { I18nMock } from '../../i18n/mock';
-import { AuthenticationMock } from '../../authentication/mock';
+import { wrapse } from 'src/utils';
+import { I18nMock } from 'src/i18n/mock';
+import { AuthenticationMock } from 'src/authentication/mock';
 import { Signoff } from './index';
 
 describe('Signoff component', () => {

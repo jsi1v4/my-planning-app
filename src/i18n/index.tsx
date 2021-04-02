@@ -1,13 +1,14 @@
 import React, { createContext, useState } from 'react';
 import { useIntl } from 'react-intl';
 
-import { INIT_LOCALE } from '../config';
+import { INIT_LOCALE } from 'src/config';
+import { II18nContext, Locale } from './types';
 
-export const I18nContext = createContext(null);
+export const I18nContext = createContext<II18nContext>(null as never);
 
 export function I18nProvider({ children }) {
-  const [lang, setLanguage] = useState(INIT_LOCALE);
-  const changeLang = (value) => {
+  const [lang, setLanguage] = useState<Locale>(INIT_LOCALE);
+  const changeLang = (value: Locale) => {
     setLanguage(value);
   };
 
@@ -25,7 +26,7 @@ export function I18nProvider({ children }) {
 
 export function useI18n() {
   const intl = useIntl();
-  return (id, values) => {
+  return (id: string, values?: Record<string, string>) => {
     const message = intl.formatMessage({ id }, values);
     return message;
   };
