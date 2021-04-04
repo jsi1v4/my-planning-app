@@ -1,19 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { render } from '@testing-library/react';
 
 import { Locale } from './types';
 import { I18nMock } from './mock';
-import { I18nContext, useI18n } from './index';
+import { useI18n, useI18nMessage } from './index';
 
 describe('LocaleProvider provider', () => {
   const ComponentEnUS = () => {
-    const t = useI18n();
+    const t = useI18nMessage();
     return <>{t('app_title')}</>;
   };
 
   const ComponentPtBR = () => {
-    const { changeLang } = useContext(I18nContext);
-    const t = useI18n();
+    const { changeLang } = useI18n();
+    const t = useI18nMessage();
 
     useEffect(() => {
       changeLang(Locale.PT_BR);

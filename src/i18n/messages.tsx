@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { ConfigProvider } from 'antd';
 import { IntlProvider } from 'react-intl';
 
@@ -9,10 +9,10 @@ import enUSe from './lang/en_US.json';
 import ptBRe from './lang/pt_BR.json';
 
 import { Locale } from './types';
-import { I18nContext } from './index';
+import { useI18n } from './index';
 
 export function I18nMessagesProvider({ children }) {
-  const { lang } = useContext(I18nContext);
+  const { lang } = useI18n();
 
   const msgs = useMemo(() => {
     switch (lang) {
