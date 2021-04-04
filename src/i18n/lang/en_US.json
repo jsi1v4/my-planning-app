@@ -10,5 +10,6 @@
   "app_login_message-username": "Please input your Username!",
   "app_login_message-password": "Please input your Password!",
   "app_login_label-rememberme": "Remember me",
-  "app_login_btn-login": "Log in"
+  "app_login_btn-login": "Log in",
+  "app_login_error-label": "Auth Error"
 }

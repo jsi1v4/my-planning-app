@@ -10,5 +10,6 @@
   "app_login_message-username": "Por favor, insira seu usuario!",
   "app_login_message-password": "Por favor, insira sua senha!",
   "app_login_label-rememberme": "Lembre de mim",
-  "app_login_btn-login": "Logar"
+  "app_login_btn-login": "Logar",
+  "app_login_error-label": "Erro ao logar"
 }

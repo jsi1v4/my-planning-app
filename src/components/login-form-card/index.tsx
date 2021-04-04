@@ -1,26 +1,37 @@
 import React from 'react';
 import { Card, Form, Input, Checkbox, Button } from 'antd';
+import { FormInstance } from 'antd/lib/form';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-import { useI18n } from 'src/i18n';
+import { useI18nMessage } from 'src/i18n';
+import { LoginProps } from 'src/authentication/types';
+
+import { CustomAlert } from './styles';
 
 export interface LoginFormCardProps {
-  initialValues?: {
-    remember: boolean;
-  };
+  form?: FormInstance;
+  initialValues?: LoginProps;
   handleLogin?: () => void;
+  isLoading?: boolean;
+  error?: string;
+  onCloseError?: () => void;
 }
 
 export function LoginFormCard({
+  form,
   initialValues,
-  handleLogin
+  handleLogin,
+  isLoading,
+  error,
+  onCloseError
 }: LoginFormCardProps) {
-  const t = useI18n();
+  const t = useI18nMessage();
 
   return (
     <Card>
       <Form
         name="form_login"
+        form={form}
         initialValues={initialValues}
         onFinish={handleLogin}
       >
@@ -45,17 +56,23 @@ export function LoginFormCard({
             placeholder={t('app_login_label-password')}
           />
         </Form.Item>
-        <Form.Item>
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>{t('app_login_label-rememberme')}</Checkbox>
-          </Form.Item>
+        <Form.Item name="remember" valuePropName="checked">
+          <Checkbox>{t('app_login_label-rememberme')}</Checkbox>
         </Form.Item>
 
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            {t('app_login_btn-login')}
-          </Button>
-        </Form.Item>
+        <Button type="primary" htmlType="submit" loading={isLoading}>
+          {t('app_login_btn-login')}
+        </Button>
+
+        {error && (
+          <CustomAlert
+            message={t('app_login_error-label')}
+            description={error}
+            type="error"
+            onClose={onCloseError}
+            closable
+          />
+        )}
       </Form>
     </Card>
   );

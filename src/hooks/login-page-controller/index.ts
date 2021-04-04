@@ -1,21 +1,41 @@
-import { useContext } from 'react';
+import { useState } from 'react';
 import { NextRouter } from 'next/router';
+import { Form } from 'antd';
 
-import { AuthenticationContext } from 'src/authentication';
+import { useAuth } from 'src/authentication';
+import { LoginProps } from 'src/authentication/types';
 
 export function useLoginPageController(router: NextRouter) {
-  const { authOn } = useContext(AuthenticationContext);
+  const { authOn } = useAuth();
+  const [form] = Form.useForm();
+  const initialValues: LoginProps = { remember: true };
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>();
 
-  const initialValues = { remember: true };
+  const handleLogin = async () => {
+    setIsLoading(true);
+    try {
+      const values = await form.validateFields();
+      await authOn(values);
+      router.push('/');
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-  const handleLogin = () => {
-    authOn();
-    router.push('/');
+  const handleError = () => {
+    setError('');
   };
 
   return {
+    form,
     initialValues,
-    handleLogin
+    handleLogin,
+    isLoading,
+    error,
+    handleError
   };
 }
 

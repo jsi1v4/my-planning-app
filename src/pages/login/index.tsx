@@ -7,11 +7,25 @@ import { FillLayout } from 'src/styles/login';
 
 function Login() {
   const router = useRouter();
-  const { initialValues, handleLogin } = useLoginPageController(router);
+  const {
+    form,
+    initialValues,
+    handleLogin,
+    isLoading,
+    error,
+    handleError
+  } = useLoginPageController(router);
 
   return (
     <FillLayout>
-      <LoginFormCard initialValues={initialValues} handleLogin={handleLogin} />
+      <LoginFormCard
+        form={form}
+        initialValues={initialValues}
+        handleLogin={handleLogin}
+        isLoading={isLoading}
+        error={error}
+        onCloseError={handleError}
+      />
     </FillLayout>
   );
 }
