@@ -1,10 +1,10 @@
 import React from 'react';
 import { Menu } from 'antd';
 
-import { useI18n } from 'src/i18n';
+import { useI18nMessage } from 'src/i18n';
 
 export function AppMenu() {
-  const t = useI18n();
+  const t = useI18nMessage();
 
   return (
     <Menu

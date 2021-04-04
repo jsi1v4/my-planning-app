@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
 
 import { LOGO } from 'src/config';
-import { useI18n } from 'src/i18n';
-import { AuthenticationContext } from 'src/authentication';
+import { useI18nMessage } from 'src/i18n';
+import { useAuth } from 'src/authentication';
 import { Logo, FullPage, Header, Content, Centered } from './styles';
 
 export interface AppLayoutProps {
@@ -19,8 +19,8 @@ export function AppLayout({
   extraWhenAuth,
   children
 }: AppLayoutProps) {
-  const t = useI18n();
-  const { isAuth } = useContext(AuthenticationContext);
+  const t = useI18nMessage();
+  const { isAuth } = useAuth();
 
   return (
     <Layout data-testid="app-layout">

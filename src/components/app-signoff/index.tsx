@@ -1,16 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button, Tooltip, Popconfirm } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 
-import { useI18n } from 'src/i18n';
-import { AuthenticationContext } from 'src/authentication';
+import { useI18nMessage } from 'src/i18n';
+import { useAuth } from 'src/authentication';
 
 export function Signoff() {
-  const { userName, authOff } = useContext(AuthenticationContext);
-  const t = useI18n();
+  const t = useI18nMessage();
+  const { session, authOff } = useAuth();
 
   return (
-    <Tooltip title={userName} placement="bottomRight">
+    <Tooltip
+      title={session?.displayName || session?.email}
+      placement="bottomRight"
+    >
       <Popconfirm
         title={t('app_signoff-confirm')}
         onConfirm={authOff}

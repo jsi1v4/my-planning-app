@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
 
-import { I18nContext } from 'src/i18n';
+import { useI18n } from 'src/i18n';
 import { Locale } from 'src/i18n/types';
 
 export function I18nSwitch() {
-  const { lang, changeLang } = useContext(I18nContext);
+  const { lang, changeLang } = useI18n();
 
   const handleRadio = (e: RadioChangeEvent) => {
     changeLang(e.target.value);
