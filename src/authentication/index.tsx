@@ -1,29 +1,47 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { IAuthenticationContext } from './types';
+import { onStateChanged, setPersistence, signIn, signOut } from 'src/lib/auth';
+import { LoginProps, Session, IAuthenticationContext } from './types';
 
 export const AuthenticationContext = createContext<IAuthenticationContext>(
   null as never
 );
 
+export const useAuth = () => useContext(AuthenticationContext);
+
 export function AuthenticationProvider({ children }) {
-  const [userName] = useState<string>('John Doe');
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
 
-  const authOn = () => {
-    setIsAuth(true);
+  const authOn = async (props: LoginProps) => {
+    await setPersistence(props.remember);
+    await signIn(props.username, props.password);
   };
 
-  const authOff = () => {
-    setIsAuth(false);
-  };
+  const authOff = () => signOut();
+
+  useEffect(() => {
+    const unsubscribe = onStateChanged(async (state) => {
+      setIsAuth(!!state);
+      if (state) {
+        setSession({
+          displayName: state.displayName,
+          email: state.email,
+          photoURL: state.photoURL,
+          emailVerified: state.emailVerified,
+          token: await state.getIdToken()
+        });
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <AuthenticationContext.Provider
       value={{
         isAuth,
-        userName,
+        session,
         authOn,
         authOff
       }}
@@ -40,15 +58,16 @@ export function useLoginAction() {
 
 export function withAuth() {
   return (Component) =>
-    React.memo(function AuthWrappedComponent(props) {
-      const { isAuth } = useContext(AuthenticationContext);
+    React.memo((props) => {
+      const { isAuth } = useAuth();
       const loginAction = useLoginAction();
 
       useEffect(() => {
-        if (!isAuth) {
+        if (isAuth === false) {
           loginAction();
         }
-      }, [isAuth, loginAction]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [isAuth]);
 
       if (isAuth) {
         return <Component {...props} />;
