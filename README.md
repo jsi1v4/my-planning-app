@@ -8,7 +8,7 @@ My finances management app, built with nextjs and ant design.
 - Styled components: Create styles
 - AntD: Icons and components
 - FormatJs: Support ptBR and enUS langs
-- Axios: Http request
+- Firebase: Backend as service
 - Jest and Testing-Library: Unit tests
 - ESlint and lint-staged: Airbnb config
 - Commitlint: Conventional commits config
