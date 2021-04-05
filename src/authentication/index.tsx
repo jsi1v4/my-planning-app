@@ -1,8 +1,18 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 
-import { onStateChanged, setPersistence, signIn, signOut } from 'src/lib/auth';
+import { Auth } from 'src/lib/auth';
 import { LoginProps, Session, IAuthenticationContext } from './types';
+
+interface ProvidersProps {
+  api: Auth;
+  children: ReactNode;
+}
 
 export const AuthenticationContext = createContext<IAuthenticationContext>(
   null as never
@@ -10,32 +20,34 @@ export const AuthenticationContext = createContext<IAuthenticationContext>(
 
 export const useAuth = () => useContext(AuthenticationContext);
 
-export function AuthenticationProvider({ children }) {
+export function AuthenticationProvider({ api, children }: ProvidersProps) {
   const [isAuth, setIsAuth] = useState<boolean | null>(null);
   const [session, setSession] = useState<Session | null>(null);
 
   const authOn = async (props: LoginProps) => {
-    await setPersistence(props.remember);
-    await signIn(props.username, props.password);
+    await api.setPersistence(props.remember);
+    await api.signIn(props.username, props.password);
   };
 
-  const authOff = () => signOut();
+  const authOff = () => api.signOut();
+
+  const onStateChanged = async (state) => {
+    setIsAuth(!!state);
+    if (state) {
+      setSession({
+        displayName: state.displayName,
+        email: state.email,
+        photoURL: state.photoURL,
+        emailVerified: state.emailVerified,
+        token: await state.getIdToken()
+      });
+    }
+  };
 
   useEffect(() => {
-    const unsubscribe = onStateChanged(async (state) => {
-      setIsAuth(!!state);
-      if (state) {
-        setSession({
-          displayName: state.displayName,
-          email: state.email,
-          photoURL: state.photoURL,
-          emailVerified: state.emailVerified,
-          token: await state.getIdToken()
-        });
-      }
-    });
+    const unsubscribe = api.onStateChanged(onStateChanged);
     return () => unsubscribe();
-  }, []);
+  }, [api]);
 
   return (
     <AuthenticationContext.Provider
@@ -52,8 +64,7 @@ export function AuthenticationProvider({ children }) {
 }
 
 export function useLoginAction() {
-  const router = useRouter();
-  return () => router.push('/login');
+  return () => window.location.replace('/login');
 }
 
 export function withAuth() {
@@ -66,8 +77,7 @@ export function withAuth() {
         if (isAuth === false) {
           loginAction();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [isAuth]);
+      }, [isAuth, loginAction]);
 
       if (isAuth) {
         return <Component {...props} />;

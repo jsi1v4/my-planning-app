@@ -128,70 +128,38 @@ exports[`LoginFormCard component matches snapshot 1`] = `
               <div
                 class="ant-form-item-control-input-content"
               >
-                <div
-                  class="ant-row ant-form-item"
+                <label
+                  class="ant-checkbox-wrapper"
                 >
-                  <div
-                    class="ant-col ant-form-item-control"
+                  <span
+                    class="ant-checkbox"
                   >
-                    <div
-                      class="ant-form-item-control-input"
-                    >
-                      <div
-                        class="ant-form-item-control-input-content"
-                      >
-                        <label
-                          class="ant-checkbox-wrapper"
-                        >
-                          <span
-                            class="ant-checkbox"
-                          >
-                            <input
-                              class="ant-checkbox-input"
-                              id="form_login_remember"
-                              type="checkbox"
-                              value=""
-                            />
-                            <span
-                              class="ant-checkbox-inner"
-                            />
-                          </span>
-                          <span>
-                            Remember me
-                          </span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="ant-row ant-form-item"
-        >
-          <div
-            class="ant-col ant-form-item-control"
-          >
-            <div
-              class="ant-form-item-control-input"
-            >
-              <div
-                class="ant-form-item-control-input-content"
-              >
-                <button
-                  class="ant-btn ant-btn-primary"
-                  type="submit"
-                >
-                  <span>
-                    Log in
+                    <input
+                      class="ant-checkbox-input"
+                      id="form_login_remember"
+                      type="checkbox"
+                      value=""
+                    />
+                    <span
+                      class="ant-checkbox-inner"
+                    />
                   </span>
-                </button>
+                  <span>
+                    Remember me
+                  </span>
+                </label>
               </div>
             </div>
           </div>
         </div>
+        <button
+          class="ant-btn ant-btn-primary"
+          type="submit"
+        >
+          <span>
+            Log in
+          </span>
+        </button>
       </form>
     </div>
   </div>
