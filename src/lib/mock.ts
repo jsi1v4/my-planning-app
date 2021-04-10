@@ -1,5 +1,10 @@
 export class Auth {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onAuthStateChanged(fn = () => {}) {
+    return () => {};
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async setPersistence(persist?: string) {
     return new Promise((resolve) => resolve({}));
   }
