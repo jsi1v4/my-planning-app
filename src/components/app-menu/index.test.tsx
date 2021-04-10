@@ -13,10 +13,9 @@ describe('AppMenu component', () => {
   });
 
   it('should render component', async () => {
-    const { getByTestId, getByText } = render(<AppMenu />, {
+    const { getByTestId } = render(<AppMenu />, {
       wrapper: I18nMock
     });
     expect(getByTestId('menu').innerHTML).toBeDefined();
-    expect(getByText('Home').innerHTML).toBeDefined();
   });
 });

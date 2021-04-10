@@ -8,7 +8,7 @@ import { useI18n, useI18nMessage } from './index';
 describe('LocaleProvider provider', () => {
   const ComponentEnUS = () => {
     const t = useI18nMessage();
-    return <>{t('app_title')}</>;
+    return <>{t('app-title')}</>;
   };
 
   const ComponentPtBR = () => {
@@ -19,7 +19,7 @@ describe('LocaleProvider provider', () => {
       changeLang(Locale.PT_BR);
     }, [changeLang]);
 
-    return <>{t('app_title')}</>;
+    return <>{t('app-title')}</>;
   };
 
   it('should display en US lang', async () => {

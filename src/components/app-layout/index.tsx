@@ -32,7 +32,7 @@ export function AppLayout({
       </Layout.Sider>
       <FullPage>
         <Header
-          title={t('app_title')}
+          title={t('app-title')}
           extra={[extra, isAuth && extraWhenAuth]}
         />
         <Content>{children}</Content>

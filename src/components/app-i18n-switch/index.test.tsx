@@ -11,8 +11,7 @@ describe('I18nSwitch component', () => {
   });
 
   it('should render component', async () => {
-    const { getByText } = render(<I18nSwitch />, { wrapper: I18nMock });
-    expect(getByText('English').innerHTML).toBeDefined();
-    expect(getByText('Português').innerHTML).toBeDefined();
+    const { getByTestId } = render(<I18nSwitch />, { wrapper: I18nMock });
+    expect(getByTestId('i18n').innerHTML).toBeDefined();
   });
 });

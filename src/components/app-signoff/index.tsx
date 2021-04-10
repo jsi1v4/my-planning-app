@@ -15,10 +15,10 @@ export function Signoff() {
       placement="bottomRight"
     >
       <Popconfirm
-        title={t('app_signoff-confirm')}
+        title={t('signoff-confirm')}
         onConfirm={authOff}
-        okText={t('app_signoff-ok')}
-        cancelText={t('app_signoff-cancel')}
+        okText={t('signoff-ok')}
+        cancelText={t('signoff-cancel')}
         placement="bottomRight"
       >
         <Button

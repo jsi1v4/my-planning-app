@@ -37,36 +37,36 @@ export function LoginFormCard({
       >
         <Form.Item
           name="username"
-          rules={[{ required: true, message: t('app_login_message-username') }]}
+          rules={[{ required: true, message: t('login-message-username') }]}
         >
           <Input
             data-testid="username"
             prefix={<UserOutlined />}
-            placeholder={t('app_login_label-username')}
+            placeholder={t('login-label-username')}
           />
         </Form.Item>
         <Form.Item
           name="password"
-          rules={[{ required: true, message: t('app_login_message-password') }]}
+          rules={[{ required: true, message: t('login-message-password') }]}
         >
           <Input
             data-testid="password"
             prefix={<LockOutlined />}
             type="password"
-            placeholder={t('app_login_label-password')}
+            placeholder={t('login-label-password')}
           />
         </Form.Item>
         <Form.Item name="remember" valuePropName="checked">
-          <Checkbox>{t('app_login_label-rememberme')}</Checkbox>
+          <Checkbox>{t('login-label-rememberme')}</Checkbox>
         </Form.Item>
 
         <Button type="primary" htmlType="submit" loading={isLoading}>
-          {t('app_login_btn-login')}
+          {t('login-btn-login')}
         </Button>
 
         {error && (
           <CustomAlert
-            message={t('app_login_error-label')}
+            message={t('login-error-label')}
             description={error}
             type="error"
             onClose={onCloseError}
