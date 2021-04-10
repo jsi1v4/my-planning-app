@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 import { ICON } from 'src/config';
 
-class MyDocument extends Document {
+class Doc extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
@@ -29,4 +29,4 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument;
+export default Doc;

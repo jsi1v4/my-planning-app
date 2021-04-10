@@ -77,7 +77,8 @@ export function withAuth() {
         if (isAuth === false) {
           loginAction();
         }
-      }, [isAuth, loginAction]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [isAuth]);
 
       if (isAuth) {
         return <Component {...props} />;
