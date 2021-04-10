@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { NextRouter } from 'next/router';
 import { Form } from 'antd';
 
 import { useAuth } from 'src/authentication';
 import { LoginProps } from 'src/authentication/types';
 
-export function useLoginPageController(router: NextRouter) {
+export function useLoginPageController() {
   const { authOn } = useAuth();
   const [form] = Form.useForm();
   const initialValues: LoginProps = { remember: true };
@@ -17,7 +16,7 @@ export function useLoginPageController(router: NextRouter) {
     try {
       const values = await form.validateFields();
       await authOn(values);
-      router.push('/');
+      window.location.replace('/');
     } catch (e) {
       setError(e.message);
     } finally {

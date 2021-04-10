@@ -1,12 +1,10 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 
 import { useLoginPageController } from 'src/hooks/login-page-controller';
 import { LoginFormCard } from 'src/components/login-form-card';
 import { FillLayout } from 'src/styles/login';
 
 function Login() {
-  const router = useRouter();
   const {
     form,
     initialValues,
@@ -14,7 +12,7 @@ function Login() {
     isLoading,
     error,
     handleError
-  } = useLoginPageController(router);
+  } = useLoginPageController();
 
   return (
     <FillLayout>
