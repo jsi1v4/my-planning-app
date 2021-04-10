@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 import { LOGO } from 'src/config';
 import { useI18nMessage } from 'src/i18n';
-import { useAuth } from 'src/authentication';
+import { useAuth } from 'src/providers/authentication';
 import { Logo, FullPage, Header, Content, Centered } from './styles';
 
 export interface AppLayoutProps {

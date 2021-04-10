@@ -5,7 +5,7 @@ import { initializeApp } from 'src/lib';
 import { I18nProvider } from 'src/i18n';
 import { I18nMessagesProvider } from 'src/i18n/messages';
 import { GlobalStyles } from 'src/styles';
-import { AuthenticationProvider } from 'src/authentication';
+import { AuthenticationProvider } from 'src/providers/authentication';
 import { AppLayout } from 'src/components/app-layout';
 import { AppMenu } from 'src/components/app-menu';
 import { Signoff } from 'src/components/app-signoff';

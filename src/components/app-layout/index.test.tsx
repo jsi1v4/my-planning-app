@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import { wrapse } from 'src/utils';
 import { I18nMock } from 'src/i18n/mock';
-import { AuthenticationMock } from 'src/authentication/mock';
+import { AuthenticationMock } from 'src/providers/authentication/mock';
 import { AppLayout } from './index';
 
 describe('AppLayout component', () => {

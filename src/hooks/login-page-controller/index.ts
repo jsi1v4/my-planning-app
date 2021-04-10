@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Form } from 'antd';
 
-import { useAuth } from 'src/authentication';
-import { LoginProps } from 'src/authentication/types';
+import { useAuth } from 'src/providers/authentication';
+import { LoginProps } from 'src/providers/authentication/types';
 
 export function useLoginPageController() {
   const { authOn } = useAuth();

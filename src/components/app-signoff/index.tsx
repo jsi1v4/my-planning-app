@@ -3,7 +3,7 @@ import { Button, Tooltip, Popconfirm } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 
 import { useI18nMessage } from 'src/i18n';
-import { useAuth } from 'src/authentication';
+import { useAuth } from 'src/providers/authentication';
 
 export function Signoff() {
   const t = useI18nMessage();

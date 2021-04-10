@@ -4,7 +4,7 @@ import { FormInstance } from 'antd/lib/form';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import { useI18nMessage } from 'src/i18n';
-import { LoginProps } from 'src/authentication/types';
+import { LoginProps } from 'src/providers/authentication/types';
 
 import { CustomAlert } from './styles';
 
