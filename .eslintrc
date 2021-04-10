@@ -23,6 +23,7 @@
     "operator-linebreak": "off",
     "comma-dangle": "off",
     "linebreak-style": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "class-methods-use-this": "off"
   }
 }
