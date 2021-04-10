@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useLoginPageController } from 'src/hooks/login-page-controller';
 import { LoginFormCard } from 'src/components/login-form-card';
-import { FillLayout } from 'src/styles/login';
+import { ContentCentered } from 'src/styles/login';
 
 function Login() {
   const {
@@ -15,7 +15,7 @@ function Login() {
   } = useLoginPageController();
 
   return (
-    <FillLayout>
+    <ContentCentered>
       <LoginFormCard
         form={form}
         initialValues={initialValues}
@@ -24,7 +24,7 @@ function Login() {
         error={error}
         onCloseError={handleError}
       />
-    </FillLayout>
+    </ContentCentered>
   );
 }
 
