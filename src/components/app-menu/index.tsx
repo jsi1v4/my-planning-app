@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Menu } from 'antd';
 
+import { MENU_OPTIONS } from 'src/config';
 import { useI18nMessage } from 'src/i18n';
 
 export function AppMenu() {
   const t = useI18nMessage();
 
+  const [selected, setSelected] = useState<string>(window.location.pathname);
+
+  const nameFormatter = (value?: string) => String(value).replace(/\//g, '-');
+
+  const handleMenuClick = ({ key }) => {
+    setSelected(key);
+    window.location.replace(key);
+  };
+
   return (
     <Menu
       theme="dark"
       mode="inline"
-      defaultSelectedKeys={['1']}
       data-testid="menu"
+      selectedKeys={[selected]}
+      onClick={handleMenuClick}
     >
-      <Menu.Item key="1">{t('app_menu-home')}</Menu.Item>
+      {MENU_OPTIONS.map((Option) => (
+        <Menu.Item key={Option.Route} icon={<Option.Icon />}>
+          {t(`menu${nameFormatter(Option.Route)}`)}
+        </Menu.Item>
+      ))}
     </Menu>
   );
 }
