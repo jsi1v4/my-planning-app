@@ -12,6 +12,12 @@ export interface Session {
   token: string;
 }
 
+export interface IAuthService {
+  setPersistence: (persist?: boolean) => Promise<unknown>;
+  signIn: (username: string, password: string) => Promise<unknown>;
+  signOut: () => Promise<unknown>;
+}
+
 export interface IAuthenticationContext {
   isAuth: boolean | null;
   session: Session | null;

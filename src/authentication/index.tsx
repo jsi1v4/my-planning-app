@@ -1,17 +1,19 @@
 import React, {
+  PropsWithChildren,
   createContext,
-  ReactNode,
+  useCallback,
   useContext,
   useEffect,
+  useMemo,
   useState
 } from 'react';
 
-import { Auth } from 'src/lib/auth';
+import { AuthInstance, SessionUser } from 'src/lib';
+import { AuthService } from './service';
 import { LoginProps, Session, IAuthenticationContext } from './types';
 
 interface ProvidersProps {
-  api: Auth;
-  children: ReactNode;
+  api: AuthInstance;
 }
 
 export const AuthenticationContext = createContext<IAuthenticationContext>(
@@ -20,18 +22,28 @@ export const AuthenticationContext = createContext<IAuthenticationContext>(
 
 export const useAuth = () => useContext(AuthenticationContext);
 
-export function AuthenticationProvider({ api, children }: ProvidersProps) {
+export function AuthenticationProvider({
+  api,
+  children
+}: PropsWithChildren<ProvidersProps>) {
+  const service = useMemo(() => new AuthService(api), [api]);
+
   const [isAuth, setIsAuth] = useState<boolean | null>(null);
   const [session, setSession] = useState<Session | null>(null);
 
-  const authOn = async (props: LoginProps) => {
-    await api.setPersistence(props.remember);
-    await api.signIn(props.username, props.password);
-  };
+  const authOn = useCallback(
+    async (props: LoginProps) => {
+      await service.setPersistence(props.remember);
+      await service.signIn(props.username, props.password);
+    },
+    [service]
+  );
 
-  const authOff = () => api.signOut();
+  const authOff = useCallback(async () => {
+    await service.signOut();
+  }, [service]);
 
-  const onStateChanged = async (state) => {
+  const onStateChanged = async (state: SessionUser) => {
     setIsAuth(!!state);
     if (state) {
       setSession({
@@ -45,7 +57,7 @@ export function AuthenticationProvider({ api, children }: ProvidersProps) {
   };
 
   useEffect(() => {
-    const unsubscribe = api.onStateChanged(onStateChanged);
+    const unsubscribe = api.onAuthStateChanged(onStateChanged);
     return () => unsubscribe();
   }, [api]);
 
