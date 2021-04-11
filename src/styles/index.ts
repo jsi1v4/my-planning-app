@@ -11,6 +11,11 @@ export const GlobalStyles = createGlobalStyle`
     --heading-4-size: ceil(var(--font-size-base) * 1.42);
     --heading-5-size: ceil(var(--font-size-base) * 1.14);
 
+    --font-weight-light: 300;
+    --font-weight-base: 400;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
     --line-height-base: 1.5715;
     --border-radius-base: 2px;
     --border-radius-sm: var(--border-radius-base);
@@ -36,6 +41,11 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Open Sans', sans-serif;
     font-size: var(--font-size-base);
+    font-weight: var(--font-weight-base);
+  }
+
+  table th {
+    font-weight: var(--font-weight-semibold) !important;
   }
 `;
 

@@ -9,8 +9,6 @@ export function AppMenu() {
 
   const [selected, setSelected] = useState<string>(window.location.pathname);
 
-  const nameFormatter = (value?: string) => String(value).replace(/\//g, '-');
-
   const handleMenuClick = ({ key }) => {
     setSelected(key);
     window.location.replace(key);
@@ -24,9 +22,9 @@ export function AppMenu() {
       selectedKeys={[selected]}
       onClick={handleMenuClick}
     >
-      {MENU_OPTIONS.map((Option) => (
-        <Menu.Item key={Option.Route} icon={<Option.Icon />}>
-          {t(`menu${nameFormatter(Option.Route)}`)}
+      {MENU_OPTIONS.map((option) => (
+        <Menu.Item key={option.route} icon={<option.icon />}>
+          {t(`menu-${option.name}`)}
         </Menu.Item>
       ))}
     </Menu>

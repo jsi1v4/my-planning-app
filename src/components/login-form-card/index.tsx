@@ -28,7 +28,7 @@ export function LoginFormCard({
   const t = useI18nMessage();
 
   return (
-    <Card>
+    <Card bordered={false}>
       <Form
         name="form_login"
         form={form}

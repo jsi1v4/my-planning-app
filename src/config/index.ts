@@ -10,11 +10,13 @@ export const LOGO =
 
 export const MENU_OPTIONS = [
   {
-    Route: '/',
-    Icon: HomeOutlined
+    name: 'home',
+    route: '/',
+    icon: HomeOutlined
   },
   {
-    Route: '/sheet',
-    Icon: TableOutlined
+    name: 'sheet',
+    route: '/sheet',
+    icon: TableOutlined
   }
 ];
