@@ -1,0 +1,100 @@
+{
+  "data": [
+    {
+      "key": 1,
+      "date": "2021-01-01T00:00:00",
+      "buget": 4500,
+      "cost": 3290,
+      "remaining": 1210,
+      "profit": 1210
+    },
+    {
+      "key": 2,
+      "date": "2021-02-01T00:00:00",
+      "buget": 4500,
+      "cost": 3370,
+      "remaining": 1130,
+      "profit": 2340
+    },
+    {
+      "key": 3,
+      "date": "2021-03-01T00:00:00",
+      "buget": 4500,
+      "cost": 3120,
+      "remaining": 1210,
+      "profit": 3720
+    },
+    {
+      "key": 4,
+      "date": "2021-04-01T00:00:00",
+      "buget": 4500,
+      "cost": 4800,
+      "remaining": -300,
+      "profit": -100
+    },
+    {
+      "key": 5,
+      "date": "2021-05-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": -300,
+      "profit": 300
+    },
+    {
+      "key": 6,
+      "date": "2021-06-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": 300,
+      "profit": 0
+    },
+    {
+      "key": 7,
+      "date": "2021-07-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": -300,
+      "profit": 300
+    },
+    {
+      "key": 8,
+      "date": "2021-08-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": -300,
+      "profit": 0
+    },
+    {
+      "key": 9,
+      "date": "2021-09-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": -300,
+      "profit": 300
+    },
+    {
+      "key": 10,
+      "date": "2021-10-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": 0,
+      "profit": 300
+    },
+    {
+      "key": 11,
+      "date": "2021-11-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": -300,
+      "profit": 300
+    },
+    {
+      "key": 12,
+      "date": "2021-12-01T00:00:00",
+      "buget": 4500,
+      "cost": 0,
+      "remaining": -300,
+      "profit": 300
+    }
+  ]
+}

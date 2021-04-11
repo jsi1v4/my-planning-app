@@ -1,10 +1,45 @@
 import React from 'react';
 import { compose } from 'ramda';
+import { Layout, Tabs } from 'antd';
+import { ProjectOutlined, TransactionOutlined } from '@ant-design/icons';
 
-import { withAuth } from 'src/authentication';
+import { withAuth } from 'src/providers/authentication';
+import { useI18nMessage } from 'src/i18n';
+import { useSheetPageController } from 'src/hooks/sheet-page-controller';
+import { SheetBugetTable } from 'src/components/sheet-buget-table';
+import { TabTitle } from 'src/styles/sheet';
 
 function Sheet() {
-  return <></>;
+  const t = useI18nMessage();
+
+  const { bugetData } = useSheetPageController();
+
+  const titleBuget = (
+    <TabTitle>
+      <TransactionOutlined />
+      {t('sheet-title-buget')}
+    </TabTitle>
+  );
+
+  const titleForecast = (
+    <TabTitle>
+      <ProjectOutlined />
+      {t('sheet-title-forecast')}
+    </TabTitle>
+  );
+
+  return (
+    <Layout.Content>
+      <Tabs>
+        <Tabs.TabPane key="0" tab={titleBuget}>
+          <SheetBugetTable data={bugetData} />
+        </Tabs.TabPane>
+        <Tabs.TabPane key="1" tab={titleForecast}>
+          <></>
+        </Tabs.TabPane>
+      </Tabs>
+    </Layout.Content>
+  );
 }
 
 export default compose(withAuth())(Sheet);
