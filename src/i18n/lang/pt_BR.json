@@ -13,5 +13,13 @@
   "login-message-password": "Por favor, insira sua senha!",
   "login-label-rememberme": "Lembre de mim",
   "login-btn-login": "Logar",
-  "login-error-label": "Erro ao logar"
+  "login-error-label": "Erro ao logar",
+  "sheet-title-buget": "Orçamento",
+  "sheet-title-forecast": "Planejamento",
+  "sheet-buget-table-year": "Ano",
+  "sheet-buget-table-month": "Mês",
+  "sheet-buget-table-buget": "Orçamento",
+  "sheet-buget-table-cost": "Custo",
+  "sheet-buget-table-remaining": "Restante",
+  "sheet-buget-table-profit": "Lucro"
 }

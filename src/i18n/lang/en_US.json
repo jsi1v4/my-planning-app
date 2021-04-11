@@ -13,5 +13,13 @@
   "login-message-password": "Please input your Password!",
   "login-label-rememberme": "Remember me",
   "login-btn-login": "Log in",
-  "login-error-label": "Auth Error"
+  "login-error-label": "Auth Error",
+  "sheet-title-buget": "Buget",
+  "sheet-title-forecast": "Forecast",
+  "sheet-buget-table-year": "Year",
+  "sheet-buget-table-month": "Month",
+  "sheet-buget-table-buget": "Buget",
+  "sheet-buget-table-cost": "Cost",
+  "sheet-buget-table-remaining": "Remaining",
+  "sheet-buget-table-profit": "Profit"
 }
