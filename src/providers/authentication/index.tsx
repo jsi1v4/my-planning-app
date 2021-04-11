@@ -8,7 +8,7 @@ import React, {
   useState
 } from 'react';
 
-import { AuthInstance, SessionUser } from 'src/lib';
+import { AuthInstance, SessionInstance } from 'src/lib/auth';
 import { AuthService } from './service';
 import { LoginProps, Session, IAuthenticationContext } from './types';
 
@@ -43,7 +43,7 @@ export function AuthenticationProvider({
     await service.signOut();
   }, [service]);
 
-  const onStateChanged = async (state: SessionUser) => {
+  const onStateChanged = async (state: SessionInstance) => {
     setIsAuth(!!state);
     if (state) {
       setSession({
@@ -57,9 +57,9 @@ export function AuthenticationProvider({
   };
 
   useEffect(() => {
-    const unsubscribe = api.onAuthStateChanged(onStateChanged);
+    const unsubscribe = service.onStateChanged(onStateChanged);
     return () => unsubscribe();
-  }, [api]);
+  }, [service]);
 
   return (
     <AuthenticationContext.Provider

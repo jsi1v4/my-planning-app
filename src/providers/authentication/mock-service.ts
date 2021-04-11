@@ -1,7 +1,13 @@
+import { SessionInstance } from 'src/lib/auth';
 import { IAuthService } from './types';
 
 export class AuthService implements IAuthService {
   constructor(private api: unknown) {}
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  onStateChanged(fn: (session: SessionInstance) => void) {
+    return () => {};
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async setPersistence(persist = false) {

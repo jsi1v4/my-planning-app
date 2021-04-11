@@ -1,8 +1,6 @@
-import firebase, { createApp } from './firebase';
-
-export type AuthInstance = firebase.auth.Auth;
-export type ApiInstance = firebase.firestore.Firestore;
-export type SessionUser = firebase.User;
+import { createApp } from './firebase';
+import { AuthInstance } from './auth';
+import { ApiInstance } from './api';
 
 export function initializeApp() {
   const app = createApp();
@@ -10,8 +8,8 @@ export function initializeApp() {
   const api = app.firestore();
   return {
     app,
-    auth,
-    api
+    auth: new AuthInstance(auth),
+    api: new ApiInstance(api)
   };
 }
 

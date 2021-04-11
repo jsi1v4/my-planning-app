@@ -1,14 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { AuthInstance } from 'src/lib';
-import { Auth } from 'src/lib/mock';
+import { MockAuthInstance } from 'src/lib/auth';
 import { AuthenticationProvider } from './index';
 
-describe('AuthenticationProvider component', () => {
+describe('AuthenticationProvider', () => {
   it('should render providers', () => {
     const { asFragment } = render(
-      <AuthenticationProvider api={new Auth() as AuthInstance}>
+      <AuthenticationProvider api={new MockAuthInstance({}) as never}>
         <></>
       </AuthenticationProvider>
     );
