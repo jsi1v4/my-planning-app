@@ -60,7 +60,7 @@ export function LoginFormCard({
           <Checkbox>{t('login-label-rememberme')}</Checkbox>
         </Form.Item>
 
-        <Button type="primary" htmlType="submit" loading={isLoading}>
+        <Button type="primary" htmlType="submit" loading={isLoading} block>
           {t('login-btn-login')}
         </Button>
 

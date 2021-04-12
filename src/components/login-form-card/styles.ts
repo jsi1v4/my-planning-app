@@ -5,6 +5,4 @@ export const CustomAlert = styled(Alert)`
   margin-top: var(--margin-lg);
 `;
 
-export default {
-  CustomAlert
-};
+export default CustomAlert;
