@@ -36,6 +36,8 @@ export const GlobalStyles = createGlobalStyle`
     --height-base: 32px;
     --height-lg: 40px;
     --height-sm: 24px;
+
+    --border-color: #303030;
   }
 
   body {

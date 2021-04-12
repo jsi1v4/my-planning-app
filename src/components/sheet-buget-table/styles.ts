@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { InputNumber } from 'antd';
+import { InputNumber, Button } from 'antd';
 
 export const FlexCol = styled.span`
   display: flex;
@@ -16,4 +16,8 @@ export const Space = styled.div`
   align-items: center;
   justify-content: center;
   margin-left: var(--margin-xs);
+`;
+
+export const ButtonLabel = styled(Button)`
+  padding: 0;
 `;
