@@ -22,5 +22,9 @@
   "sheet-buget-table-buget": "Buget",
   "sheet-buget-table-cost": "Cost",
   "sheet-buget-table-remaining": "Remaining",
-  "sheet-buget-table-profit": "Profit"
+  "sheet-buget-table-profit": "Profit",
+  "sheet-forecast-table-description": "Description",
+  "sheet-forecast-table-dateof": "Date of",
+  "sheet-forecast-table-dateto": "Date to",
+  "sheet-forecast-table-cost": "Cost"
 }

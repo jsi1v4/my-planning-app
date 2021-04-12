@@ -7,12 +7,13 @@ import { withAuth } from 'src/providers/authentication';
 import { useI18nMessage } from 'src/i18n';
 import { useSheetPageController } from 'src/hooks/sheet-page-controller';
 import { SheetBugetTable } from 'src/components/sheet-buget-table';
+import { SheetForecastTable } from 'src/components/sheet-forecast-table';
 import { TabTitle } from 'src/styles/sheet';
 
 function Sheet() {
   const t = useI18nMessage();
 
-  const { bugetData } = useSheetPageController();
+  const { bugetData, forecastData } = useSheetPageController();
 
   const titleBuget = (
     <TabTitle>
@@ -35,7 +36,7 @@ function Sheet() {
           <SheetBugetTable data={bugetData} />
         </Tabs.TabPane>
         <Tabs.TabPane key="1" tab={titleForecast}>
-          <></>
+          <SheetForecastTable data={forecastData} />
         </Tabs.TabPane>
       </Tabs>
     </Layout.Content>
