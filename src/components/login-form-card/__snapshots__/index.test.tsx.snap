@@ -153,7 +153,7 @@ exports[`LoginFormCard component matches snapshot 1`] = `
           </div>
         </div>
         <button
-          class="ant-btn ant-btn-primary"
+          class="ant-btn ant-btn-primary ant-btn-block"
           type="submit"
         >
           <span>
