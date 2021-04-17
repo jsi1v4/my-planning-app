@@ -43,21 +43,37 @@ export function useFormatter() {
       year: 'numeric'
     });
 
-  const dayFormatter = (value?: string | Date) =>
-    formatDate(value, {
-      day: '2-digit'
-    });
+  const dayFormatter = (value?: number | string | Date) => {
+    if (typeof value === 'number') {
+      return formatDate(new Date(1, 1, value), { day: '2-digit' });
+    }
+    return formatDate(value, { day: '2-digit' });
+  };
 
-  const monthFormatter = (value?: string | Date) =>
-    fixMonthStr(formatDate(value, { month: 'short' }));
+  const monthFormatter = (value?: number | string | Date) => {
+    if (typeof value === 'number') {
+      return fixMonthStr(
+        formatDate(new Date(1, value - 1, 1), { month: 'short' })
+      );
+    }
+    return fixMonthStr(formatDate(value, { month: 'short' }));
+  };
 
-  const monthLongFormatter = (value?: string | Date) =>
-    fixMonthStr(formatDate(value, { month: 'long' }));
+  const monthLongFormatter = (value?: number | string | Date) => {
+    if (typeof value === 'number') {
+      return fixMonthStr(
+        formatDate(new Date(1, value - 1, 1), { month: 'long' })
+      );
+    }
+    return fixMonthStr(formatDate(value, { month: 'long' }));
+  };
 
-  const yearFormatter = (value?: string | Date) =>
-    formatDate(value, {
-      year: 'numeric'
-    });
+  const yearFormatter = (value?: number | string | Date) => {
+    if (typeof value === 'number') {
+      return formatDate(new Date(value, 1, 1), { year: 'numeric' });
+    }
+    return formatDate(value, { year: 'numeric' });
+  };
 
   const monthYearFormatter = (value?: string | Date) =>
     formatDate(value, {
