@@ -1,23 +1,27 @@
 export interface ISheetService {
-  getBuget: () => Promise<BugetRow[]>;
-  getForecast: () => Promise<ForecastRow[]>;
+  getBuget: (year: number) => Promise<BugetRow[]>;
+  getForecast: (year: number) => Promise<ForecastRow[]>;
+  putBuget: (key: number, value: number) => Promise<void>;
 }
 
 export type ISheetContext = ISheetService;
 
 export interface BugetRow {
   key: number;
-  date: string;
+  year: number;
+  month: number;
   buget: number;
   cost: number;
-  remaining: number;
-  profit: number;
+  remaining?: number;
+  profit?: number;
 }
 
 export interface ForecastRow {
   key: number;
   description: string;
-  dateOf: string;
-  dateTo: string;
+  yearOf: number;
+  yearTo: number;
+  monthOf: number;
+  monthTo: number;
   cost: number;
 }

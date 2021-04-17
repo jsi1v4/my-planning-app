@@ -8,8 +8,10 @@ const MOCK = [
   {
     key: 1,
     description: 'Test',
-    dateOf: '2021-01-01T00:00:00',
-    dateTo: '2021-02-01T00:00:00',
+    yearOf: 2021,
+    yearTo: 2021,
+    monthOf: 1,
+    monthTo: 2,
     cost: 1000
   }
 ];

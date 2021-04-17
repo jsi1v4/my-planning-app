@@ -7,7 +7,8 @@ import { SheetBugetTable } from './index';
 const MOCK = [
   {
     key: 1,
-    date: '2021-01-01T00:00:00',
+    year: 2021,
+    month: 1,
     buget: 4500,
     cost: 3290,
     remaining: 1210,

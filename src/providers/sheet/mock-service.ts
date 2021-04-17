@@ -1,19 +1,23 @@
-import MockBuget from 'src/mocks/get-sheet-buget.json';
-import MockForecastSheet from 'src/mocks/get-sheet-forecast.json';
-
 import { ISheetService, BugetRow, ForecastRow } from './types';
 
 export class SheetService implements ISheetService {
   constructor(private api: unknown) {}
 
-  async getBuget() {
-    return new Promise<BugetRow[]>((resolve) => resolve(MockBuget.data));
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async getBuget(year: number): Promise<BugetRow[]> {
+    const mock = await import('src/mocks/get-sheet-buget.json');
+    return mock.data;
   }
 
-  async getForecast() {
-    return new Promise<ForecastRow[]>((resolve) =>
-      resolve(MockForecastSheet.data)
-    );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async getForecast(year: number): Promise<ForecastRow[]> {
+    const mock = await import('src/mocks/get-sheet-forecast.json');
+    return mock.data;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async putBuget(key: number, value: number) {
+    return new Promise<void>((resolve) => resolve());
   }
 }
 

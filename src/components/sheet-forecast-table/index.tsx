@@ -13,6 +13,16 @@ export function SheetForecastTable({ data }: SheetForecastTableProps) {
   const t = useI18nMessage();
   const { monthYearFormatter, currencyFormatter } = useFormatter();
 
+  const DateOfCell = ({ yearOf, monthOf }) => {
+    const date = new Date(yearOf, monthOf - 1);
+    return monthYearFormatter(date);
+  };
+
+  const DateToCell = ({ yearTo, monthTo }) => {
+    const date = new Date(yearTo, monthTo - 1);
+    return monthYearFormatter(date);
+  };
+
   return (
     <Card bordered={false}>
       <Table
@@ -25,13 +35,11 @@ export function SheetForecastTable({ data }: SheetForecastTableProps) {
           },
           {
             title: t('sheet-forecast-table-dateof'),
-            dataIndex: 'dateOf',
-            render: monthYearFormatter
+            render: DateOfCell
           },
           {
             title: t('sheet-forecast-table-dateto'),
-            dataIndex: 'dateTo',
-            render: monthYearFormatter
+            render: DateToCell
           },
           {
             title: t('sheet-forecast-table-cost'),

@@ -53,16 +53,6 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     </FlexCol>
   );
 
-  const CostCell = ({ cost }) => <TagCurrency value={cost} />;
-
-  const RemainingCell = ({ remaining }) => (
-    <TagCurrency value={remaining} validate />
-  );
-
-  const ProfitCell = ({ profit }) => (
-    <TagCurrency value={profit} withicon validate />
-  );
-
   const BugetEditableCell = ({ keyRow, buget }) => {
     const [value, setValue] = useState<number>(buget);
     return (
@@ -109,6 +99,16 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     );
   };
 
+  const CostCell = ({ cost }) => <TagCurrency value={cost} />;
+
+  const RemainingCell = ({ remaining }) => (
+    <TagCurrency value={remaining} validate />
+  );
+
+  const ProfitCell = ({ profit }) => (
+    <TagCurrency value={profit} withicon validate />
+  );
+
   const actions = [
     <Button key="0" type="primary" icon={<PlusOutlined />}>
       {t('sheet-buget-button-new')}
@@ -123,13 +123,12 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
         columns={[
           {
             title: t('sheet-buget-table-year'),
-            dataIndex: 'date',
-            width: 100,
-            render: yearFormatter
+            dataIndex: 'year',
+            width: 100
           },
           {
             title: t('sheet-buget-table-month'),
-            dataIndex: 'date',
+            dataIndex: 'month',
             width: 120,
             render: monthLongFormatter
           },

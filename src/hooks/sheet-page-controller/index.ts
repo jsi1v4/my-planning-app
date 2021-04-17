@@ -13,9 +13,19 @@ export function useSheetPageController() {
     setBugetData(undefined);
     setForecastData(undefined);
 
-    context.getBuget().then(setBugetData).catch(console.error);
-    context.getForecast().then(setForecastData).catch(console.error);
+    const year = new Date().getFullYear();
+
+    context.getBuget(year).then(setBugetData).catch(console.error);
+    context.getForecast(year).then(setForecastData).catch(console.error);
   }, [context]);
+
+  const bugetOnSave = useCallback(
+    (key: number, value: number) => {
+      console.log(key, value);
+      return context.putBuget(key, value).catch(console.error);
+    },
+    [context]
+  );
 
   useEffect(() => {
     fetchData();
@@ -23,6 +33,7 @@ export function useSheetPageController() {
 
   return {
     bugetData,
+    bugetOnSave,
     forecastData
   };
 }

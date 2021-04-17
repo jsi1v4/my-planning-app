@@ -13,7 +13,7 @@ import { TabTitle } from 'src/styles/sheet';
 function Sheet() {
   const t = useI18nMessage();
 
-  const { bugetData, forecastData } = useSheetPageController();
+  const { bugetData, forecastData, bugetOnSave } = useSheetPageController();
 
   const titleBuget = (
     <TabTitle>
@@ -33,7 +33,7 @@ function Sheet() {
     <Layout.Content>
       <Tabs>
         <Tabs.TabPane key="0" tab={titleBuget}>
-          <SheetBugetTable data={bugetData} />
+          <SheetBugetTable data={bugetData} onSave={bugetOnSave} />
         </Tabs.TabPane>
         <Tabs.TabPane key="1" tab={titleForecast}>
           <SheetForecastTable data={forecastData} />
