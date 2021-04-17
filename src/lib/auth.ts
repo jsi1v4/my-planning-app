@@ -28,21 +28,22 @@ export class MockAuthInstance {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onAuthStateChanged(fn: (session: SessionInstance) => void) {
+    fn({} as never);
     return () => {};
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async setPersistence(persist?: boolean) {
-    return new Promise((resolve) => resolve({}));
+    return new Promise<void>((resolve) => resolve());
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async signInWithEmailAndPassword(username: string, password: string) {
-    return new Promise((resolve) => resolve({}));
+    return new Promise<unknown>((resolve) => resolve({}));
   }
 
   async signOut() {
-    return new Promise((resolve) => resolve({}));
+    return new Promise<void>((resolve) => resolve());
   }
 }
 

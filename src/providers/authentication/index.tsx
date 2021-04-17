@@ -10,6 +10,7 @@ import React, {
 
 import { AuthInstance, SessionInstance } from 'src/lib/auth';
 import { AuthService } from './service';
+// import { AuthService } from './mock-service';
 import { LoginProps, Session, IAuthenticationContext } from './types';
 
 interface ProvidersProps {

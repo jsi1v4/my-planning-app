@@ -6,12 +6,19 @@ export class AuthService implements IAuthService {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onStateChanged(fn: (session: SessionInstance) => void) {
+    const getIdToken = () => new Promise<string>((r) => r('asdasdasd'));
+    fn({
+      displayName: 'John Doe',
+      email: 'john.doe@test.com',
+      emailVerified: true,
+      getIdToken
+    } as never);
     return () => {};
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async setPersistence(persist = false) {
-    return new Promise<unknown>((resolve) => resolve({}));
+    return new Promise<void>((resolve) => resolve());
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -20,7 +27,7 @@ export class AuthService implements IAuthService {
   }
 
   async signOut() {
-    return new Promise<unknown>((resolve) => resolve({}));
+    return new Promise<void>((resolve) => resolve());
   }
 }
 
