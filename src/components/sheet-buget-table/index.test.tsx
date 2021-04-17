@@ -6,7 +6,7 @@ import { SheetBugetTable } from './index';
 
 const MOCK = [
   {
-    key: 1,
+    key: '1',
     year: 2021,
     month: 1,
     buget: 4500,

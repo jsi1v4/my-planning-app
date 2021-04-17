@@ -55,6 +55,21 @@ export class ApiInstance {
     const query = compose(withWhere(params), withOrderBy(params))(collection);
     return query.get().then<T[]>(mapDocuments);
   }
+
+  async post<T>(url: string, data: T) {
+    const collection = this.firestore.collection(url);
+    return collection.add(data);
+  }
+
+  async put<T>(url: string, key: string, data: T) {
+    const collection = this.firestore.collection(url).doc(key);
+    return collection.update(data);
+  }
+
+  async delete(url: string, key: string) {
+    const collection = this.firestore.collection(url).doc(key);
+    return collection.delete();
+  }
 }
 
 export class MockApiInstance {

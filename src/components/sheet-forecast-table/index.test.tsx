@@ -6,7 +6,7 @@ import { SheetForecastTable } from './index';
 
 const MOCK = [
   {
-    key: 1,
+    key: '1',
     description: 'Test',
     yearOf: 2021,
     yearTo: 2021,

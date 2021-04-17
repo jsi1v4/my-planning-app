@@ -16,26 +16,24 @@ import { FlexCol, Input, Space, ButtonLabel } from './styles';
 
 export interface SheetBugetTableProps {
   data?: BugetRow[];
-  onSave?: (key: number, value: number) => Promise<void>;
+  onSave?: (item: BugetRow) => Promise<void>;
 }
 
 export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
   const t = useI18nMessage();
-  const {
-    monthLongFormatter,
-    yearFormatter,
-    currencyFormatter
-  } = useFormatter();
+  const { monthLongFormatter, currencyFormatter } = useFormatter();
 
-  const [selected, setSelected] = useState<number>();
+  const [selected, setSelected] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>();
 
-  const handleSave = (key: number, value: number) => {
+  const handleSave = (item: BugetRow) => {
     setIsLoading(true);
-    onSave?.(key, value).finally(() => setIsLoading(false));
+    onSave?.(item)
+      .then(() => setSelected(undefined))
+      .finally(() => setIsLoading(false));
   };
 
-  const handleEdit = (key: number) => {
+  const handleEdit = (key: string) => {
     if (!isLoading) {
       setSelected(key);
     }
@@ -53,8 +51,8 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     </FlexCol>
   );
 
-  const BugetEditableCell = ({ keyRow, buget }) => {
-    const [value, setValue] = useState<number>(buget);
+  const BugetEditableCell = ({ item }) => {
+    const [value, setValue] = useState<number>(item.buget);
     return (
       <FlexCol>
         <Input
@@ -69,7 +67,12 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
             type="link"
             size="small"
             loading={isLoading}
-            onClick={() => handleSave(keyRow, value)}
+            onClick={() =>
+              handleSave({
+                ...item,
+                buget: value
+              })
+            }
             icon={<SaveOutlined />}
           />
           <Button
@@ -84,9 +87,9 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     );
   };
 
-  const BugetCell = ({ key, buget }) => {
+  const BugetCell = ({ key, buget, ...props }) => {
     return selected === key ? (
-      <BugetEditableCell keyRow={key} buget={buget} />
+      <BugetEditableCell item={{ key, buget, ...props }} />
     ) : (
       <ButtonLabel
         key={key}

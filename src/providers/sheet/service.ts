@@ -34,8 +34,13 @@ export class SheetService implements ISheetService {
     });
   }
 
-  async putBuget(key: number, value: number) {
-    return new Promise<void>((resolve) => resolve());
+  async putBuget(item: BugetRow) {
+    return this.api.put('buget', item.key, {
+      year: item.year,
+      month: item.month,
+      buget: item.buget,
+      cost: item.cost
+    });
   }
 }
 
