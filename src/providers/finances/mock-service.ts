@@ -24,6 +24,11 @@ export class FinancesService implements IFinancesService {
   async addYearBuget(year: number) {
     return new Promise<void>((resolve) => resolve());
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async remYearBuget(keys: string[]) {
+    return new Promise<void>((resolve) => resolve());
+  }
 }
 
 export default FinancesService;

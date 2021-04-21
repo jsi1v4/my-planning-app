@@ -3,6 +3,7 @@ export interface IFinancesService {
   getForecast: (year: number) => Promise<ForecastRow[]>;
   putBuget: (items: BugetRow[]) => Promise<void>;
   addYearBuget: (year: number) => Promise<void>;
+  remYearBuget: (keys: string[]) => Promise<void>;
 }
 
 export type IFinancesContext = IFinancesService;

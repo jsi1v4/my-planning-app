@@ -8,6 +8,7 @@ import { useI18nMessage } from 'src/i18n';
 import { useFinancesPageController } from 'src/hooks/finances-page-controller';
 import { FinancesBugetTable } from 'src/components/finances-buget-table';
 import { FinancesForecastTable } from 'src/components/finances-forecast-table';
+import { FinancesYearHandler } from 'src/components/finances-year-handler';
 import { TabTitle } from 'src/styles/finances';
 
 function Finances() {
@@ -17,7 +18,10 @@ function Finances() {
     bugetData,
     forecastData,
     bugetOnSave,
-    bugetOnAddYear
+    bugetOnAddYear,
+    bugetOnRemYear,
+    year,
+    handleYear
   } = useFinancesPageController();
 
   const titleBuget = (
@@ -36,12 +40,17 @@ function Finances() {
 
   return (
     <Layout.Content>
-      <Tabs>
+      <Tabs
+        tabBarExtraContent={
+          <FinancesYearHandler value={year} onChange={handleYear} />
+        }
+      >
         <Tabs.TabPane key="0" tab={titleBuget}>
           <FinancesBugetTable
             data={bugetData}
             onSave={bugetOnSave}
             onAddYear={bugetOnAddYear}
+            onRemYear={bugetOnRemYear}
           />
         </Tabs.TabPane>
         <Tabs.TabPane key="1" tab={titleForecast}>

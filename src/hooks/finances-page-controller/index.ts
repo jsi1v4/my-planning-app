@@ -6,24 +6,19 @@ import { BugetRow, ForecastRow } from 'src/providers/finances/types';
 export function useFinancesPageController() {
   const context = useFinancesContext();
 
+  const [year, setYear] = useState<number>(new Date().getFullYear());
   const [bugetData, setBugetData] = useState<BugetRow[]>();
   const [forecastData, setForecastData] = useState<ForecastRow[]>();
 
-  const fetchBuget = useCallback(
-    (year?: number) => {
-      setBugetData(undefined);
-      context.getBuget(year).then(setBugetData).catch(console.error);
-    },
-    [context]
-  );
+  const fetchBuget = useCallback(() => {
+    setBugetData(undefined);
+    context.getBuget(year).then(setBugetData).catch(console.error);
+  }, [year, context]);
 
-  const fetchForecast = useCallback(
-    (year?: number) => {
-      setForecastData(undefined);
-      context.getForecast(year).then(setForecastData).catch(console.error);
-    },
-    [context]
-  );
+  const fetchForecast = useCallback(() => {
+    setForecastData(undefined);
+    context.getForecast(year).then(setForecastData).catch(console.error);
+  }, [year, context]);
 
   const bugetOnSave = useCallback(
     async (items: BugetRow[]) => {
@@ -35,26 +30,38 @@ export function useFinancesPageController() {
     [context, fetchBuget]
   );
 
-  const bugetOnAddYear = useCallback(
-    async (year: number) => {
-      return context
-        .addYearBuget(year)
-        .then(() => fetchBuget(year))
-        .catch(console.error);
-    },
-    [context, fetchBuget]
-  );
+  const bugetOnAddYear = useCallback(async () => {
+    return context
+      .addYearBuget(year)
+      .then(() => fetchBuget())
+      .catch(console.error);
+  }, [year, context, fetchBuget]);
+
+  const bugetOnRemYear = useCallback(async () => {
+    const keys = bugetData?.map((t) => t.key);
+    return context
+      .remYearBuget(keys)
+      .then(() => fetchBuget())
+      .catch(console.error);
+  }, [bugetData, context, fetchBuget]);
+
+  const handleYear = (value: number) => {
+    setYear(value);
+  };
 
   useEffect(() => {
     fetchBuget();
     fetchForecast();
-  }, [fetchBuget, fetchForecast]);
+  }, [fetchBuget, fetchForecast, year]);
 
   return {
     bugetData,
     bugetOnSave,
     bugetOnAddYear,
-    forecastData
+    bugetOnRemYear,
+    forecastData,
+    year,
+    handleYear
   };
 }
 

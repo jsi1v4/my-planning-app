@@ -38,6 +38,7 @@ export const GlobalStyles = createGlobalStyle`
     --height-sm: 24px;
 
     --border-color: #303030;
+    --font-color-link: #177ddc;
   }
 
   body {

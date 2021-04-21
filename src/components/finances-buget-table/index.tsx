@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Card, Table, Button } from 'antd';
+import { Card, Table, Button, Space } from 'antd';
 import {
   CloseOutlined,
   EditOutlined,
+  MinusOutlined,
   PlusOutlined,
   SaveOutlined
 } from '@ant-design/icons';
@@ -19,20 +20,22 @@ type KeyList = { [key: string]: BugetRow };
 export interface FinancesBugetTableProps {
   data?: BugetRow[];
   onSave?: (items: BugetRow[]) => Promise<void>;
-  onAddYear?: (year: number) => Promise<void>;
+  onAddYear?: () => Promise<void>;
+  onRemYear?: () => Promise<void>;
 }
 
 export function FinancesBugetTable({
   data,
   onSave,
-  onAddYear
+  onAddYear,
+  onRemYear
 }: FinancesBugetTableProps) {
   const t = useI18nMessage();
   const { monthLongFormatter, currencyFormatter } = useFormatter();
 
   const [selected, setSelected] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>();
-  const [isAddYearLoading, setIsAddYearLoading] = useState<boolean>();
+  const [isYearLoading, setIsYearLoading] = useState<boolean>();
   const [keysWithChanges, setKeysWithChanges] = useState<KeyList>({});
 
   const handleSave = () => {
@@ -47,10 +50,13 @@ export function FinancesBugetTable({
   };
 
   const handleAddYear = () => {
-    setIsAddYearLoading(true);
-    onAddYear?.(new Date().getFullYear() + 1).finally(() =>
-      setIsAddYearLoading(false)
-    );
+    setIsYearLoading(true);
+    onAddYear?.().finally(() => setIsYearLoading(false));
+  };
+
+  const handleRemYear = () => {
+    setIsYearLoading(true);
+    onRemYear?.().finally(() => setIsYearLoading(false));
   };
 
   const handleCancel = () => {
@@ -122,41 +128,63 @@ export function FinancesBugetTable({
     <TagCurrency value={profit} withicon validate />
   );
 
-  const actions = Object.keys(keysWithChanges).length
-    ? [
-        <Button
-          key="1"
-          type="primary"
-          icon={<CloseOutlined />}
-          onClick={handleCancel}
-          danger
-        >
-          {t('finances-buget-button-cancel')}
-        </Button>,
+  const Actions = () => {
+    if (Object.keys(keysWithChanges).length) {
+      return (
+        <Space>
+          <Button
+            key="1"
+            type="link"
+            icon={<CloseOutlined />}
+            onClick={handleCancel}
+            danger
+          >
+            {t('app-cancel')}
+          </Button>
+          <Button
+            key="0"
+            type="link"
+            icon={<SaveOutlined />}
+            loading={isLoading}
+            onClick={handleSave}
+          >
+            {t('app-save')}
+          </Button>
+        </Space>
+      );
+    }
+    if (data?.length === 0) {
+      return (
         <Button
           key="0"
-          type="primary"
-          icon={<SaveOutlined />}
-          loading={isLoading}
-          onClick={handleSave}
-        >
-          {t('finances-buget-button-save')}
-        </Button>
-      ]
-    : [
-        <Button
-          key="0"
-          type="primary"
+          type="link"
           icon={<PlusOutlined />}
-          loading={isAddYearLoading}
+          loading={isYearLoading}
           onClick={handleAddYear}
         >
-          {t('finances-buget-button-new')}
+          {t('app-add')} {t('finances-buget-table-year')}
         </Button>
-      ];
+      );
+    }
+    if (data?.length > 0) {
+      return (
+        <Button
+          key="0"
+          type="link"
+          icon={<MinusOutlined />}
+          loading={isYearLoading}
+          onClick={handleRemYear}
+          danger
+        >
+          {t('app-rem')} {t('finances-buget-table-year')}
+        </Button>
+      );
+    }
+    return <></>;
+  };
 
   return (
-    <Card bordered={false} actions={actions}>
+    <Card bordered={false} actions={[<Actions />]}>
       <Table
         dataSource={data}
         loading={!data}

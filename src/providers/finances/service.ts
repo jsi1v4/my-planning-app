@@ -4,15 +4,14 @@ import { IFinancesService, BugetRow, ForecastRow } from './types';
 export class FinancesService implements IFinancesService {
   constructor(private api: ApiInstance) {}
 
-  async getBuget(year?: number) {
-    const filterYear = year || new Date().getFullYear();
+  async getBuget(year: number) {
     return Promise.all([
       this.api.get<BugetRow>('buget', {
         orderBy: 'month',
-        where: [['year', '==', filterYear]]
+        where: [['year', '==', year]]
       }),
       this.api.get<BugetRow>('buget', {
-        where: [['year', '==', filterYear - 1]]
+        where: [['year', '==', year - 1]]
       })
     ]).then(([currentYear, lastYear]) => {
       let profit = lastYear.reduce((acc, n) => acc + (n.buget - n.cost), 0);
@@ -28,11 +27,10 @@ export class FinancesService implements IFinancesService {
     });
   }
 
-  async getForecast(year?: number) {
-    const filterYear = year || new Date().getFullYear();
+  async getForecast(year: number) {
     return this.api.get<ForecastRow>('forecast', {
       orderBy: 'monthOf',
-      where: [['yearOf', '==', filterYear]]
+      where: [['yearOf', '==', year]]
     });
   }
 
@@ -54,6 +52,10 @@ export class FinancesService implements IFinancesService {
     await Promise.all(
       months.map((item, month) => this.api.post('buget', { ...item, month }))
     );
+  }
+
+  async remYearBuget(keys: string[]) {
+    await Promise.all(keys.map((key) => this.api.delete('buget', key)));
   }
 }
 

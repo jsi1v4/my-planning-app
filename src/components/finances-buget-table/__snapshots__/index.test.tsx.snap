@@ -184,7 +184,7 @@ exports[`FinancesBugetTable component matches snapshot 1`] = `
       >
         <span>
           <button
-            class="ant-btn ant-btn-primary"
+            class="ant-btn ant-btn-link"
             type="button"
           >
             <span
@@ -214,7 +214,7 @@ exports[`FinancesBugetTable component matches snapshot 1`] = `
               </svg>
             </span>
             <span>
-              Add year
+              Add Year
             </span>
           </button>
         </span>

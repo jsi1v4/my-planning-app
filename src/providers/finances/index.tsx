@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, createContext, useContext } from 'react';
 
 import { ApiInstance } from 'src/lib/api';
-// import { FinancesService } from './service';
-import { FinancesService } from './mock-service';
+import { FinancesService } from './service';
+// import { FinancesService } from './mock-service';
 import { IFinancesContext } from './types';
 
 interface ProvidersProps {
