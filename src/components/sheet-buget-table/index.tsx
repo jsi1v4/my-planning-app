@@ -12,25 +12,51 @@ import { useFormatter } from 'src/i18n/formatter';
 import { BugetRow } from 'src/providers/sheet/types';
 import { TagCurrency } from 'src/components/custom-tag-currency';
 
-import { FlexCol, Input, Space, ButtonLabel } from './styles';
+import { FlexCol, Input, ButtonLabel } from './styles';
+
+type KeyList = { [key: string]: BugetRow };
 
 export interface SheetBugetTableProps {
   data?: BugetRow[];
-  onSave?: (item: BugetRow) => Promise<void>;
+  onSave?: (items: BugetRow[]) => Promise<void>;
+  onAddYear?: (year: number) => Promise<void>;
 }
 
-export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
+export function SheetBugetTable({
+  data,
+  onSave,
+  onAddYear
+}: SheetBugetTableProps) {
   const t = useI18nMessage();
   const { monthLongFormatter, currencyFormatter } = useFormatter();
 
   const [selected, setSelected] = useState<string>();
   const [isLoading, setIsLoading] = useState<boolean>();
+  const [isAddYearLoading, setIsAddYearLoading] = useState<boolean>();
+  const [keysWithChanges, setKeysWithChanges] = useState<KeyList>({});
 
-  const handleSave = (item: BugetRow) => {
+  const handleSave = () => {
+    const items = Object.values(keysWithChanges);
     setIsLoading(true);
-    onSave?.(item)
-      .then(() => setSelected(undefined))
+    onSave?.(items)
+      .then(() => {
+        setSelected(undefined);
+        setKeysWithChanges({});
+      })
       .finally(() => setIsLoading(false));
+  };
+
+  const handleAddYear = () => {
+    setIsAddYearLoading(true);
+    onAddYear?.(new Date().getFullYear() + 1).finally(() =>
+      setIsAddYearLoading(false)
+    );
+  };
+
+  const handleCancel = () => {
+    setIsLoading(false);
+    setSelected(undefined);
+    setKeysWithChanges({});
   };
 
   const handleEdit = (key: string) => {
@@ -39,9 +65,9 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     }
   };
 
-  const handleCancel = () => {
-    setIsLoading(false);
+  const handleEditCancel = (key: string) => {
     setSelected(undefined);
+    delete keysWithChanges[key];
   };
 
   const BugetHeader = (
@@ -51,45 +77,29 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     </FlexCol>
   );
 
-  const BugetEditableCell = ({ item }) => {
-    const [value, setValue] = useState<number>(item.buget);
-    return (
+  const BugetCell = ({ key, buget, ...props }: BugetRow) => {
+    const item = keysWithChanges[key];
+    return selected === key ? (
       <FlexCol>
         <Input
           type="number"
           size="small"
-          value={value}
-          onChange={(v) => setValue(Number(v))}
+          defaultValue={item?.buget || buget}
+          onChange={(v) => {
+            setKeysWithChanges({
+              ...keysWithChanges,
+              [key]: { ...props, key, buget: Number(v) }
+            });
+          }}
         />
-        <Space>
-          <Button
-            key="0"
-            type="link"
-            size="small"
-            loading={isLoading}
-            onClick={() =>
-              handleSave({
-                ...item,
-                buget: value
-              })
-            }
-            icon={<SaveOutlined />}
-          />
-          <Button
-            key="1"
-            type="link"
-            size="small"
-            onClick={handleCancel}
-            icon={<CloseOutlined />}
-          />
-        </Space>
+        <Button
+          key="1"
+          type="link"
+          size="small"
+          onClick={() => handleEditCancel(key)}
+          icon={<CloseOutlined />}
+        />
       </FlexCol>
-    );
-  };
-
-  const BugetCell = ({ key, buget, ...props }) => {
-    return selected === key ? (
-      <BugetEditableCell item={{ key, buget, ...props }} />
     ) : (
       <ButtonLabel
         key={key}
@@ -97,7 +107,7 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
         size="small"
         onClick={() => handleEdit(key)}
       >
-        {currencyFormatter(buget)}
+        {currencyFormatter(item?.buget || buget)}
       </ButtonLabel>
     );
   };
@@ -112,11 +122,38 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
     <TagCurrency value={profit} withicon validate />
   );
 
-  const actions = [
-    <Button key="0" type="primary" icon={<PlusOutlined />}>
-      {t('sheet-buget-button-new')}
-    </Button>
-  ];
+  const actions = Object.keys(keysWithChanges).length
+    ? [
+        <Button
+          key="1"
+          type="primary"
+          icon={<CloseOutlined />}
+          onClick={handleCancel}
+          danger
+        >
+          {t('sheet-buget-button-cancel')}
+        </Button>,
+        <Button
+          key="0"
+          type="primary"
+          icon={<SaveOutlined />}
+          loading={isLoading}
+          onClick={handleSave}
+        >
+          {t('sheet-buget-button-save')}
+        </Button>
+      ]
+    : [
+        <Button
+          key="0"
+          type="primary"
+          icon={<PlusOutlined />}
+          loading={isAddYearLoading}
+          onClick={handleAddYear}
+        >
+          {t('sheet-buget-button-new')}
+        </Button>
+      ];
 
   return (
     <Card bordered={false} actions={actions}>
@@ -156,11 +193,7 @@ export function SheetBugetTable({ data, onSave }: SheetBugetTableProps) {
             render: ProfitCell
           }
         ]}
-        pagination={{
-          defaultPageSize: 12,
-          showSizeChanger: true,
-          hideOnSinglePage: true
-        }}
+        pagination={false}
         size="small"
         bordered
       />

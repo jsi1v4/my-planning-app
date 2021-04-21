@@ -1,7 +1,8 @@
 export interface ISheetService {
   getBuget: (year: number) => Promise<BugetRow[]>;
   getForecast: (year: number) => Promise<ForecastRow[]>;
-  putBuget: (item: BugetRow) => Promise<void>;
+  putBuget: (items: BugetRow[]) => Promise<void>;
+  addYearBuget: (year: number) => Promise<void>;
 }
 
 export type ISheetContext = ISheetService;

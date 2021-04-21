@@ -17,6 +17,8 @@
   "sheet-title-buget": "Buget",
   "sheet-title-forecast": "Forecast",
   "sheet-buget-button-new": "Add year",
+  "sheet-buget-button-save": "Save",
+  "sheet-buget-button-cancel": "Cancel",
   "sheet-buget-table-year": "Year",
   "sheet-buget-table-month": "Month",
   "sheet-buget-table-buget": "Buget",

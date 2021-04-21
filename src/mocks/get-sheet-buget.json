@@ -4,61 +4,61 @@
       "key": "1",
       "year": 2021,
       "month": 1,
-      "buget": 4500,
-      "cost": 3290,
-      "remaining": 1210,
-      "profit": 1210
+      "buget": 2500,
+      "cost": 1000,
+      "remaining": 1500,
+      "profit": 1500
     },
     {
       "key": "2",
       "year": 2021,
       "month": 2,
-      "buget": 4500,
-      "cost": 3370,
-      "remaining": 1130,
-      "profit": 2340
+      "buget": 2500,
+      "cost": 1000,
+      "remaining": 1500,
+      "profit": 3000
     },
     {
       "key": "3",
       "year": 2021,
       "month": 3,
-      "buget": 4500,
-      "cost": 3120,
-      "remaining": 1210,
-      "profit": 3720
+      "buget": 2500,
+      "cost": 3000,
+      "remaining": -500,
+      "profit": 2500
     },
     {
       "key": "4",
       "year": 2021,
       "month": 4,
-      "buget": 4500,
-      "cost": 4800,
-      "remaining": -300,
-      "profit": -100
+      "buget": 2500,
+      "cost": 3500,
+      "remaining": -1000,
+      "profit": 1500
     },
     {
       "key": "5",
       "year": 2021,
       "month": 5,
-      "buget": 4500,
-      "cost": 0,
-      "remaining": -300,
-      "profit": 300
+      "buget": 2500,
+      "cost": 4500,
+      "remaining": -2000,
+      "profit": -500
     },
     {
       "key": "6",
       "year": 2021,
       "month": 6,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
-      "remaining": 300,
-      "profit": 0
+      "remaining": 2500,
+      "profit": 2000
     },
     {
       "key": "7",
       "year": 2021,
       "month": 7,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
       "remaining": -300,
       "profit": 300
@@ -67,7 +67,7 @@
       "key": "8",
       "year": 2021,
       "month": 8,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
       "remaining": -300,
       "profit": 0
@@ -76,7 +76,7 @@
       "key": "9",
       "year": 2021,
       "month": 9,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
       "remaining": -300,
       "profit": 300
@@ -85,7 +85,7 @@
       "key": "10",
       "year": 2021,
       "month": 10,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
       "remaining": 0,
       "profit": 300
@@ -94,7 +94,7 @@
       "key": "11",
       "year": 2021,
       "month": 11,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
       "remaining": -300,
       "profit": 300
@@ -103,7 +103,7 @@
       "key": "12",
       "year": 2021,
       "month": 12,
-      "buget": 4500,
+      "buget": 2500,
       "cost": 0,
       "remaining": -300,
       "profit": 300

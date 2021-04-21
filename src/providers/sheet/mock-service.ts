@@ -16,7 +16,12 @@ export class SheetService implements ISheetService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async putBuget(item: BugetRow) {
+  async putBuget(items: BugetRow[]) {
+    return new Promise<void>((resolve) => resolve());
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async addYearBuget(year: number) {
     return new Promise<void>((resolve) => resolve());
   }
 }
