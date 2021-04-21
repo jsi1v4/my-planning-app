@@ -1,11 +1,11 @@
-export interface ISheetService {
+export interface IFinancesService {
   getBuget: (year: number) => Promise<BugetRow[]>;
   getForecast: (year: number) => Promise<ForecastRow[]>;
   putBuget: (items: BugetRow[]) => Promise<void>;
   addYearBuget: (year: number) => Promise<void>;
 }
 
-export type ISheetContext = ISheetService;
+export type IFinancesContext = IFinancesService;
 
 export interface BugetRow {
   key: string;

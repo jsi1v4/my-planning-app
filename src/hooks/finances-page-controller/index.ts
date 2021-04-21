@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { useSheetContext } from 'src/providers/sheet';
-import { BugetRow, ForecastRow } from 'src/providers/sheet/types';
+import { useFinancesContext } from 'src/providers/finances';
+import { BugetRow, ForecastRow } from 'src/providers/finances/types';
 
-export function useSheetPageController() {
-  const context = useSheetContext();
+export function useFinancesPageController() {
+  const context = useFinancesContext();
 
   const [bugetData, setBugetData] = useState<BugetRow[]>();
   const [forecastData, setForecastData] = useState<ForecastRow[]>();
@@ -58,4 +58,4 @@ export function useSheetPageController() {
   };
 }
 
-export default useSheetPageController;
+export default useFinancesPageController;

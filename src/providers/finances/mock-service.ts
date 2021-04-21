@@ -1,17 +1,17 @@
-import { ISheetService, BugetRow, ForecastRow } from './types';
+import { IFinancesService, BugetRow, ForecastRow } from './types';
 
-export class SheetService implements ISheetService {
+export class FinancesService implements IFinancesService {
   constructor(private api: unknown) {}
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async getBuget(year: number): Promise<BugetRow[]> {
-    const mock = await import('src/mocks/get-sheet-buget.json');
+    const mock = await import('src/mocks/get-finances-buget.json');
     return mock.data;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async getForecast(year: number): Promise<ForecastRow[]> {
-    const mock = await import('src/mocks/get-sheet-forecast.json');
+    const mock = await import('src/mocks/get-finances-forecast.json');
     return mock.data;
   }
 
@@ -26,4 +26,4 @@ export class SheetService implements ISheetService {
   }
 }
 
-export default SheetService;
+export default FinancesService;

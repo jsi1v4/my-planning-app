@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { I18nMock } from 'src/i18n/mock';
-import { SheetBugetTable } from './index';
+import { FinancesBugetTable } from './index';
 
 const MOCK = [
   {
@@ -16,16 +16,16 @@ const MOCK = [
   }
 ];
 
-describe('SheetBugetTable component', () => {
+describe('FinancesBugetTable component', () => {
   it('matches snapshot', () => {
-    const { asFragment } = render(<SheetBugetTable data={[]} />, {
+    const { asFragment } = render(<FinancesBugetTable data={[]} />, {
       wrapper: I18nMock
     });
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render component', async () => {
-    const { getByText } = render(<SheetBugetTable data={MOCK} />, {
+    const { getByText } = render(<FinancesBugetTable data={MOCK} />, {
       wrapper: I18nMock
     });
 

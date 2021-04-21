@@ -6,7 +6,7 @@ import { I18nProvider } from 'src/i18n';
 import { I18nMessagesProvider } from 'src/i18n/messages';
 import { GlobalStyles } from 'src/styles';
 import { AuthenticationProvider } from 'src/providers/authentication';
-import { SheetProvider } from 'src/providers/sheet';
+import { FinancesProvider } from 'src/providers/finances';
 import { AppLayout } from 'src/components/app-layout';
 import { AppMenu } from 'src/components/app-menu';
 import { Signoff } from 'src/components/app-signoff';
@@ -19,7 +19,7 @@ export function App({ Component, pageProps }) {
       <I18nMessagesProvider>
         <GlobalStyles />
         <AuthenticationProvider api={app.auth}>
-          <SheetProvider api={app.api}>
+          <FinancesProvider api={app.api}>
             <AppLayout
               menu={<AppMenu />}
               extra={[<I18nSwitch key={0} />]}
@@ -27,7 +27,7 @@ export function App({ Component, pageProps }) {
             >
               <Component {...pageProps} />
             </AppLayout>
-          </SheetProvider>
+          </FinancesProvider>
         </AuthenticationProvider>
       </I18nMessagesProvider>
     </I18nProvider>

@@ -19,6 +19,6 @@ describe('AppLayout component', () => {
       wrapper: wrapse(I18nMock, AuthenticationMock)
     });
     expect(getByTestId('app-layout').innerHTML).toBeDefined();
-    expect(getByText('Finances Management').innerHTML).toBeDefined();
+    expect(getByText('My planning').innerHTML).toBeDefined();
   });
 });

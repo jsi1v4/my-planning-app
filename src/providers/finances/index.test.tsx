@@ -2,14 +2,14 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { MockApiInstance } from 'src/lib/api';
-import { SheetProvider } from './index';
+import { FinancesProvider } from './index';
 
-describe('SheetProvider', () => {
+describe('FinancesProvider', () => {
   it('should render providers', () => {
     const { asFragment } = render(
-      <SheetProvider api={new MockApiInstance({}) as never}>
+      <FinancesProvider api={new MockApiInstance({}) as never}>
         <></>
-      </SheetProvider>
+      </FinancesProvider>
     );
     expect(asFragment()).toBeDefined();
   });

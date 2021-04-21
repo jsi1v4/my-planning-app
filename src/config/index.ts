@@ -1,4 +1,4 @@
-import { HomeOutlined, TableOutlined } from '@ant-design/icons';
+import { HomeOutlined, StockOutlined } from '@ant-design/icons';
 
 import { Locale } from 'src/i18n/types';
 
@@ -17,8 +17,8 @@ export const MENU_OPTIONS = [
     icon: HomeOutlined
   },
   {
-    name: 'sheet',
-    route: '/sheet',
-    icon: TableOutlined
+    name: 'finances',
+    route: '/finances',
+    icon: StockOutlined
   }
 ];

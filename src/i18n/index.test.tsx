@@ -26,13 +26,13 @@ describe('LocaleProvider provider', () => {
     const { getByText } = render(<ComponentEnUS />, {
       wrapper: I18nMock
     });
-    expect(getByText('Finances Management').innerHTML).toBeDefined();
+    expect(getByText('My planning').innerHTML).toBeDefined();
   });
 
   it('should display pt BR lang', async () => {
     const { getByText } = render(<ComponentPtBR />, {
       wrapper: I18nMock
     });
-    expect(getByText('Gerenciador de finanças').innerHTML).toBeDefined();
+    expect(getByText('Meu planejamento').innerHTML).toBeDefined();
   });
 });

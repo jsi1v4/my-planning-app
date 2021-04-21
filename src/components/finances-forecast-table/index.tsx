@@ -3,13 +3,13 @@ import { Card, Table } from 'antd';
 
 import { useI18nMessage } from 'src/i18n';
 import { useFormatter } from 'src/i18n/formatter';
-import { ForecastRow } from 'src/providers/sheet/types';
+import { ForecastRow } from 'src/providers/finances/types';
 
-export interface SheetForecastTableProps {
+export interface FinancesForecastTableProps {
   data?: ForecastRow[];
 }
 
-export function SheetForecastTable({ data }: SheetForecastTableProps) {
+export function FinancesForecastTable({ data }: FinancesForecastTableProps) {
   const t = useI18nMessage();
   const { monthYearFormatter, currencyFormatter } = useFormatter();
 
@@ -30,19 +30,19 @@ export function SheetForecastTable({ data }: SheetForecastTableProps) {
         loading={!data}
         columns={[
           {
-            title: t('sheet-forecast-table-description'),
+            title: t('finances-forecast-table-description'),
             dataIndex: 'description'
           },
           {
-            title: t('sheet-forecast-table-dateof'),
+            title: t('finances-forecast-table-dateof'),
             render: DateOfCell
           },
           {
-            title: t('sheet-forecast-table-dateto'),
+            title: t('finances-forecast-table-dateto'),
             render: DateToCell
           },
           {
-            title: t('sheet-forecast-table-cost'),
+            title: t('finances-forecast-table-cost'),
             dataIndex: 'cost',
             render: currencyFormatter
           }
@@ -59,4 +59,4 @@ export function SheetForecastTable({ data }: SheetForecastTableProps) {
   );
 }
 
-export default SheetForecastTable;
+export default FinancesForecastTable;

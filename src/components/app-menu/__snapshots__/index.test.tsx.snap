@@ -62,7 +62,7 @@ exports[`AppMenu component matches snapshot 1`] = `
         </svg>
       </span>
       <span>
-        Sheet
+        Finances
       </span>
     </li>
   </ul>

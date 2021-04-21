@@ -1,7 +1,7 @@
 import { ApiInstance } from 'src/lib/api';
-import { ISheetService, BugetRow, ForecastRow } from './types';
+import { IFinancesService, BugetRow, ForecastRow } from './types';
 
-export class SheetService implements ISheetService {
+export class FinancesService implements IFinancesService {
   constructor(private api: ApiInstance) {}
 
   async getBuget(year?: number) {
@@ -57,4 +57,4 @@ export class SheetService implements ISheetService {
   }
 }
 
-export default SheetService;
+export default FinancesService;

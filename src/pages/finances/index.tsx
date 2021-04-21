@@ -1,16 +1,16 @@
 import React from 'react';
 import { compose } from 'ramda';
 import { Layout, Tabs } from 'antd';
-import { ProjectOutlined, TransactionOutlined } from '@ant-design/icons';
+import { TableOutlined, TransactionOutlined } from '@ant-design/icons';
 
 import { withAuth } from 'src/providers/authentication';
 import { useI18nMessage } from 'src/i18n';
-import { useSheetPageController } from 'src/hooks/sheet-page-controller';
-import { SheetBugetTable } from 'src/components/sheet-buget-table';
-import { SheetForecastTable } from 'src/components/sheet-forecast-table';
-import { TabTitle } from 'src/styles/sheet';
+import { useFinancesPageController } from 'src/hooks/finances-page-controller';
+import { FinancesBugetTable } from 'src/components/finances-buget-table';
+import { FinancesForecastTable } from 'src/components/finances-forecast-table';
+import { TabTitle } from 'src/styles/finances';
 
-function Sheet() {
+function Finances() {
   const t = useI18nMessage();
 
   const {
@@ -18,19 +18,19 @@ function Sheet() {
     forecastData,
     bugetOnSave,
     bugetOnAddYear
-  } = useSheetPageController();
+  } = useFinancesPageController();
 
   const titleBuget = (
     <TabTitle>
-      <TransactionOutlined />
-      {t('sheet-title-buget')}
+      <TableOutlined />
+      {t('finances-title-buget')}
     </TabTitle>
   );
 
   const titleForecast = (
     <TabTitle>
-      <ProjectOutlined />
-      {t('sheet-title-forecast')}
+      <TransactionOutlined />
+      {t('finances-title-forecast')}
     </TabTitle>
   );
 
@@ -38,18 +38,18 @@ function Sheet() {
     <Layout.Content>
       <Tabs>
         <Tabs.TabPane key="0" tab={titleBuget}>
-          <SheetBugetTable
+          <FinancesBugetTable
             data={bugetData}
             onSave={bugetOnSave}
             onAddYear={bugetOnAddYear}
           />
         </Tabs.TabPane>
         <Tabs.TabPane key="1" tab={titleForecast}>
-          <SheetForecastTable data={forecastData} />
+          <FinancesForecastTable data={forecastData} />
         </Tabs.TabPane>
       </Tabs>
     </Layout.Content>
   );
 }
 
-export default compose(withAuth())(Sheet);
+export default compose(withAuth())(Finances);

@@ -1,6 +1,8 @@
-# Finances Management App
+# My Planning App
 
-My finances management app, built with nextjs and ant design.
+My planning app, built with nextjs and ant design.
+
+- financial management
 
 ## Stack
 

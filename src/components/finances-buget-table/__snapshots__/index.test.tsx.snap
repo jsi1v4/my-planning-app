@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SheetBugetTable component matches snapshot 1`] = `
+exports[`FinancesBugetTable component matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="ant-card"
@@ -67,7 +67,7 @@ exports[`SheetBugetTable component matches snapshot 1`] = `
                           class="ant-table-cell"
                         >
                           <span
-                            class="styles__FlexCol-rm0knt-0 dsZCvs"
+                            class="styles__FlexCol-sc-7wad3c-0 bYRTLm"
                           >
                             Buget
                             <span

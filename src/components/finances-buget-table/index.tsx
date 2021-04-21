@@ -9,24 +9,24 @@ import {
 
 import { useI18nMessage } from 'src/i18n';
 import { useFormatter } from 'src/i18n/formatter';
-import { BugetRow } from 'src/providers/sheet/types';
+import { BugetRow } from 'src/providers/finances/types';
 import { TagCurrency } from 'src/components/custom-tag-currency';
 
 import { FlexCol, Input, ButtonLabel } from './styles';
 
 type KeyList = { [key: string]: BugetRow };
 
-export interface SheetBugetTableProps {
+export interface FinancesBugetTableProps {
   data?: BugetRow[];
   onSave?: (items: BugetRow[]) => Promise<void>;
   onAddYear?: (year: number) => Promise<void>;
 }
 
-export function SheetBugetTable({
+export function FinancesBugetTable({
   data,
   onSave,
   onAddYear
-}: SheetBugetTableProps) {
+}: FinancesBugetTableProps) {
   const t = useI18nMessage();
   const { monthLongFormatter, currencyFormatter } = useFormatter();
 
@@ -72,7 +72,7 @@ export function SheetBugetTable({
 
   const BugetHeader = (
     <FlexCol>
-      {t('sheet-buget-table-buget')}
+      {t('finances-buget-table-buget')}
       <EditOutlined />
     </FlexCol>
   );
@@ -131,7 +131,7 @@ export function SheetBugetTable({
           onClick={handleCancel}
           danger
         >
-          {t('sheet-buget-button-cancel')}
+          {t('finances-buget-button-cancel')}
         </Button>,
         <Button
           key="0"
@@ -140,7 +140,7 @@ export function SheetBugetTable({
           loading={isLoading}
           onClick={handleSave}
         >
-          {t('sheet-buget-button-save')}
+          {t('finances-buget-button-save')}
         </Button>
       ]
     : [
@@ -151,7 +151,7 @@ export function SheetBugetTable({
           loading={isAddYearLoading}
           onClick={handleAddYear}
         >
-          {t('sheet-buget-button-new')}
+          {t('finances-buget-button-new')}
         </Button>
       ];
 
@@ -162,12 +162,12 @@ export function SheetBugetTable({
         loading={!data}
         columns={[
           {
-            title: t('sheet-buget-table-year'),
+            title: t('finances-buget-table-year'),
             dataIndex: 'year',
             width: 100
           },
           {
-            title: t('sheet-buget-table-month'),
+            title: t('finances-buget-table-month'),
             dataIndex: 'month',
             width: 120,
             render: monthLongFormatter
@@ -178,17 +178,17 @@ export function SheetBugetTable({
             render: BugetCell
           },
           {
-            title: t('sheet-buget-table-cost'),
+            title: t('finances-buget-table-cost'),
             width: 120,
             render: CostCell
           },
           {
-            title: t('sheet-buget-table-remaining'),
+            title: t('finances-buget-table-remaining'),
             width: 120,
             render: RemainingCell
           },
           {
-            title: t('sheet-buget-table-profit'),
+            title: t('finances-buget-table-profit'),
             width: 120,
             render: ProfitCell
           }
@@ -201,4 +201,4 @@ export function SheetBugetTable({
   );
 }
 
-export default SheetBugetTable;
+export default FinancesBugetTable;
