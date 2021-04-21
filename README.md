@@ -1,3 +1,5 @@
+![cover](https://raw.githubusercontent.com/jsi1v4/my-planning-app/main/public/cover.png)
+
 # My Planning App
 
 My planning app, built with nextjs and ant design.
