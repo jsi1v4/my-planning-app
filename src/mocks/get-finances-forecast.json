@@ -1,0 +1,31 @@
+{
+  "data": [
+    {
+      "key": "1",
+      "description": "Description",
+      "yearOf": 2021,
+      "yearTo": 2021,
+      "monthOf": 1,
+      "monthTo": 2,
+      "cost": 1210
+    },
+    {
+      "key": "2",
+      "description": "Description",
+      "yearOf": 2021,
+      "yearTo": 2021,
+      "monthOf": 2,
+      "monthTo": 5,
+      "cost": 1210
+    },
+    {
+      "key": "3",
+      "description": "Description",
+      "yearOf": 2021,
+      "yearTo": 2021,
+      "monthOf": 4,
+      "monthTo": 6,
+      "cost": 1210
+    }
+  ]
+}

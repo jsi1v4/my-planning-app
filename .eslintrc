@@ -1,12 +1,29 @@
 {
-  "extends": ["airbnb", "airbnb/hooks"],
-  "rules": {
-    "react/prop-types": "off",
-    "react/jsx-props-no-spreading": "off"
-  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "jest", "prettier", "@typescript-eslint"],
   "env": {
     "browser": true,
     "es6": true,
     "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "comma-dangle": "off",
+    "linebreak-style": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "class-methods-use-this": "off"
   }
 }

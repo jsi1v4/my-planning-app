@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagCurrency component matches snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class="ant-tag"
+  >
+    R$0
+  </span>
+</DocumentFragment>
+`;

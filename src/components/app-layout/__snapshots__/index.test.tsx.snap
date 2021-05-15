@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppLayout component matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="ant-layout ant-layout-has-sider"
+    data-testid="app-layout"
+  >
+    <aside
+      class="ant-layout-sider ant-layout-sider-dark"
+      style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+    >
+      <div
+        class="ant-layout-sider-children"
+      >
+        <div
+          class="ant-row styles__Centered-sc-14bh8a3-4 eVRgfD"
+        >
+          <img
+            class="styles__Logo-sc-14bh8a3-0 fnKFrM"
+            src="https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/logo192.png"
+          />
+        </div>
+      </div>
+    </aside>
+    <section
+      class="ant-layout styles__FullPage-sc-14bh8a3-1 hPVqfu"
+    >
+      <div
+        class="ant-page-header styles__Header-sc-14bh8a3-2 kYvdZv ant-page-header-ghost"
+      >
+        <div
+          class="ant-page-header-heading"
+        >
+          <div
+            class="ant-page-header-heading-left"
+          >
+            <span
+              class="ant-page-header-heading-title"
+              title="My planning"
+            >
+              My planning
+            </span>
+          </div>
+          <span
+            class="ant-page-header-heading-extra"
+          />
+        </div>
+      </div>
+      <section
+        class="ant-layout styles__Content-sc-14bh8a3-3 hHHrMw"
+      />
+    </section>
+  </section>
+</DocumentFragment>
+`;
