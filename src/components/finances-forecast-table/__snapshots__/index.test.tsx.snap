@@ -29,7 +29,23 @@ exports[`FinancesForecastTable component matches snapshot 1`] = `
                   <table
                     style="table-layout: auto;"
                   >
-                    <colgroup />
+                    <colgroup>
+                      <col
+                        style="width: 300px; min-width: 300px;"
+                      />
+                      <col
+                        style="width: 120px; min-width: 120px;"
+                      />
+                      <col
+                        style="width: 120px; min-width: 120px;"
+                      />
+                      <col
+                        style="width: 120px; min-width: 120px;"
+                      />
+                      <col
+                        style="width: 40px; min-width: 40px;"
+                      />
+                    </colgroup>
                     <thead
                       class="ant-table-thead"
                     >
@@ -54,6 +70,9 @@ exports[`FinancesForecastTable component matches snapshot 1`] = `
                         >
                           Cost
                         </th>
+                        <th
+                          class="ant-table-cell"
+                        />
                       </tr>
                     </thead>
                     <tbody
@@ -64,7 +83,7 @@ exports[`FinancesForecastTable component matches snapshot 1`] = `
                       >
                         <td
                           class="ant-table-cell"
-                          colspan="4"
+                          colspan="5"
                         >
                           <div
                             class="ant-empty ant-empty-normal"
@@ -123,6 +142,58 @@ exports[`FinancesForecastTable component matches snapshot 1`] = `
         </div>
       </div>
     </div>
+    <ul
+      class="ant-card-actions"
+    >
+      <li
+        style="width: 100%;"
+      >
+        <span>
+          <div
+            class="ant-space ant-space-horizontal ant-space-align-center"
+          >
+            <div
+              class="ant-space-item"
+            >
+              <button
+                class="ant-btn ant-btn-link"
+                type="button"
+              >
+                <span
+                  aria-label="plus"
+                  class="anticon anticon-plus"
+                  role="img"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class=""
+                    data-icon="plus"
+                    fill="currentColor"
+                    focusable="false"
+                    height="1em"
+                    viewBox="64 64 896 896"
+                    width="1em"
+                  >
+                    <defs>
+                      <style />
+                    </defs>
+                    <path
+                      d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"
+                    />
+                    <path
+                      d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  Add
+                </span>
+              </button>
+            </div>
+          </div>
+        </span>
+      </li>
+    </ul>
   </div>
 </DocumentFragment>
 `;
