@@ -1,6 +1,6 @@
 {
   "name": "my-planning-app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "My planning app, built with nextjs and ant design.",
   "main": "src/pages/index.tsx",
   "repository": "https://github.com/jsi1v4/my-planning-app.git",
