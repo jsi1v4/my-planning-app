@@ -18,7 +18,7 @@ exports[`AppLayout component matches snapshot 1`] = `
         >
           <img
             class="styles__Logo-sc-14bh8a3-0 fnKFrM"
-            src="https://raw.githubusercontent.com/jsi1v4/jsi1v4/master/assets/logo192.png"
+            src="https://raw.githubusercontent.com/jsi1v4/jsi1v4/main/assets/logo192.png"
           />
         </div>
       </div>
