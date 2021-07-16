@@ -4,7 +4,7 @@
   "description": "My planning app, built with nextjs and ant design.",
   "main": "src/pages/index.tsx",
   "repository": "https://github.com/jsi1v4/my-planning-app.git",
-  "author": "Jsi1v4 <me@jsi1v4.dev>",
+  "author": "Jsi1v4 <git@jsi1v4.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
